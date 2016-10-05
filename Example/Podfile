@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'OMAKOView_Example' do
+  pod 'OMAKOView', :path => '../'
+
+  target 'OMAKOView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
