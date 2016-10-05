@@ -22,7 +22,7 @@ pod "OMAKOView"
 
 ## Author
 
-Kevin Leong, kgleong@squareup.com
+Kevin Leong, kgleong@gmail.com
 
 ## License
 
