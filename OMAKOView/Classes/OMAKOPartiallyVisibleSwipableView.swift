@@ -6,13 +6,13 @@ import UIKit
 
 @IBDesignable
 public class OMAKOPartiallyVisibleSwipableView: UIView {
-    // Positioning
+    /// Positioning
     @IBInspectable var visibleAmount: CGFloat = 0.4
 
-    // Dimensions
+    /// Dimensions
     @IBInspectable var relativeWidth: CGFloat = 0.75
 
-    // Animation properties
+    /// Animation properties
     @IBInspectable var duration: Double = 1.5
     @IBInspectable var dampingRatio: CGFloat = 0.5
     @IBInspectable var springSpeed: CGFloat = 0.5
@@ -21,33 +21,57 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     var bottomLayoutGuide: UILayoutSupport?
     var verticalPositionConstraint: NSLayoutConstraint?
 
+    /**
+        Standard Initializer
+
+        - Parameter frame: The view's bounding frame.
+    */
     override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
+    /**
+        Required initializer for Interface Builder objects.
+    */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
     // MARK: - View Setup
 
-    /*
-        Must be called after initialization.
+    /**
+        View setup functions must be called after initialization.
+        E.g., `viewDidLoad`.
 
-        `verticalPositionConstraint` assumes that the view has been laid out and
-        the view now has concrete measurements.
+        The `verticalPositionConstraint` assumes that the view has been laid
+        out and the view now has concrete measurements.
 
-        If content is added dynamically to subviews, e.g., text is assigned to a label,
-        call setupView() after all subview content has been set.
+        If content is added dynamically to subviews, e.g., text is assigned
+        to a label, call `setupView()` or `setupView(bottomLayoutGuide:)` after
+        all subview content has been set.
+    */
+
+    /**
+        Uses the superview's `bottomLayoutGuide` as a reference to vertically
+        place the view.
+
+        This is the preferred method to use if the superview is the main view
+        for the current `UIViewController`.
+
+        - Parameter bottomLayoutGuide: The `bottomLayoutGuide` for the superview.
+    */
+    public func setupView(bottomLayoutGuide bottomLayoutGuide: UILayoutSupport) {
+        self.bottomLayoutGuide = bottomLayoutGuide
+        setupView()
+    }
+
+    /**
+        Same as `setupView(bottomLayoutGuide:)`, but uses the superview's bottom
+        attribute as a reference to vertically position the view.
     */
     public func setupView() {
         setupConstraints()
         setupGestureRecognizers()
-    }
-
-    public func setupView(bottomLayoutGuide bottomLayoutGuide: UILayoutSupport) {
-        self.bottomLayoutGuide = bottomLayoutGuide
-        setupView()
     }
 
     // MARK: - Constraints
@@ -55,7 +79,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     private func setupConstraints() {
         var constraintsList = [NSLayoutConstraint]()
 
-        // Center within superview if necessary
+        /// Center within superview if necessary
         if(alignCenter) {
             constraintsList.append(
                 NSLayoutConstraint(
@@ -70,7 +94,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
             )
         }
 
-        // Width constraint
+        /// Width constraint
         constraintsList.append(
             NSLayoutConstraint(
                 item: self,
@@ -85,16 +109,18 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
 
         NSLayoutConstraint.activateConstraints(constraintsList)
 
-        // Layout the view, since concrete bounds values are
-        // needed for bounds to calculate vertical position
-        // constraint.
+        /**
+            Layout the view, since concrete bounds values are
+            needed for bounds to calculate vertical position
+            constraint.
+        */
         layoutIfNeeded()
 
-        // Vertical positioning uses bottom of superview by default.
+        /// Vertical positioning uses bottom of superview by default.
         var verticalPositionToItem: AnyObject? = superview
         var verticalPositionAttribute = NSLayoutAttribute.Bottom
 
-        // Use the bottom layout guide if specified.
+        /// Use the bottom layout guide if specified.
         if let unwrappedBottomLayoutGuide = bottomLayoutGuide {
             verticalPositionToItem = unwrappedBottomLayoutGuide
             verticalPositionAttribute = NSLayoutAttribute.Top
@@ -162,7 +188,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     private func updateVerticalConstraint(visibleAmount: CGFloat) {
         verticalPositionConstraint!.constant = verticalConstraintConstant(visibleAmount)
 
-        // Layout view now that constraints have changed.
+        /// Layout view now that constraints have changed.
         layoutIfNeeded()
     }
 

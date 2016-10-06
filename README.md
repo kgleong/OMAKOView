@@ -1,6 +1,6 @@
 # OMAKOView
 
-[![CI Status](http://img.shields.io/travis/Kevin Leong/OMAKOView.svg?style=flat)](https://travis-ci.org/Kevin Leong/OMAKOView)
+[![CI Status](http://img.shields.io/travis/kgleong/OMAKOView.svg?style=flat)](https://travis-ci.org/kgleong/OMAKOView)
 [![Version](https://img.shields.io/cocoapods/v/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![License](https://img.shields.io/cocoapods/l/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![Platform](https://img.shields.io/cocoapods/p/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
