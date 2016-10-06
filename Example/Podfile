@@ -5,7 +5,5 @@ target 'OMAKOView_Example' do
 
   target 'OMAKOView_Tests' do
     inherit! :search_paths
-
-    
   end
 end

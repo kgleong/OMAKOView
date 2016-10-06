@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OMAKOView'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Custom user interface elements for iOS applications.'
 
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'OMAKOView/Classes/**/*'
-  
+
   # s.resource_bundles = {
   #   'OMAKOView' => ['OMAKOView/Assets/*.png']
   # }

@@ -5,7 +5,7 @@
 import UIKit
 
 @IBDesignable
-class OMAKOPartiallyVisibleSwipableView: UIView {
+public class OMAKOPartiallyVisibleSwipableView: UIView {
     // Positioning
     @IBInspectable var visibleAmount: CGFloat = 0.4
 
@@ -20,11 +20,11 @@ class OMAKOPartiallyVisibleSwipableView: UIView {
 
     var verticalPositionConstraint: NSLayoutConstraint?
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
