@@ -10,7 +10,7 @@ import UIKit
 import OMAKOView
 
 class ViewController: UIViewController {
-    @IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipableView!
+    //@IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         descriptionLabel.text = descriptionLoremIpsum
         
         // Call setupView() after the size of the container changes
-        containerView.setupView()
+        //containerView.setupView()
     }
 }
 

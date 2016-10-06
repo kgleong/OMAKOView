@@ -39,7 +39,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
         If content is added dynamically to subviews, e.g., text is assigned to a label,
         call setupView() after all subview content has been set.
     */
-    func setupView() {
+    public func setupView() {
         setupConstraints()
         setupGestureRecognizers()
     }
