@@ -1,0 +1,6 @@
+framework module Pods_OMAKOView_Tests {
+  umbrella header "Pods-OMAKOView_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

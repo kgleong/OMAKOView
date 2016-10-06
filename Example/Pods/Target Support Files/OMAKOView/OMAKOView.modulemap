@@ -1,0 +1,6 @@
+framework module OMAKOView {
+  umbrella header "OMAKOView-umbrella.h"
+
+  export *
+  module * { export * }
+}
