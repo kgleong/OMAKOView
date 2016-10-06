@@ -18,6 +18,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     @IBInspectable var springSpeed: CGFloat = 0.5
     @IBInspectable var alignCenter: Bool = true
 
+    var bottomLayoutGuide: UILayoutSupport?
     var verticalPositionConstraint: NSLayoutConstraint?
 
     override public init(frame: CGRect) {
@@ -42,6 +43,11 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     public func setupView() {
         setupConstraints()
         setupGestureRecognizers()
+    }
+
+    public func setupView(bottomLayoutGuide bottomLayoutGuide: UILayoutSupport) {
+        self.bottomLayoutGuide = bottomLayoutGuide
+        setupView()
     }
 
     // MARK: - Constraints
@@ -84,13 +90,23 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
         // constraint.
         layoutIfNeeded()
 
+        // Vertical positioning uses bottom of superview by default.
+        var verticalPositionToItem: AnyObject? = superview
+        var verticalPositionAttribute = NSLayoutAttribute.Bottom
+
+        // Use the bottom layout guide if specified.
+        if let unwrappedBottomLayoutGuide = bottomLayoutGuide {
+            verticalPositionToItem = unwrappedBottomLayoutGuide
+            verticalPositionAttribute = NSLayoutAttribute.Top
+        }
+
         verticalPositionConstraint =
             NSLayoutConstraint(
                 item: self,
                 attribute: .Top,
                 relatedBy: .Equal,
-                toItem: superview,
-                attribute: .Bottom,
+                toItem: verticalPositionToItem,
+                attribute: verticalPositionAttribute,
                 multiplier: 1,
                 constant: verticalConstraintConstant(self.visibleAmount)
         )
