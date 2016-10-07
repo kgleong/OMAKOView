@@ -19,12 +19,14 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     @IBInspectable var alignCenter: Bool = true
 
     var bottomLayoutGuide: UILayoutSupport?
+    var isFullyVisible = false
     var verticalPositionConstraint: NSLayoutConstraint?
 
     /**
         Standard Initializer
 
-        - Parameter frame: The view's bounding frame.
+        - parameters:
+          - frame: The view's frame.
     */
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,6 +34,9 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
 
     /**
         Required initializer for Interface Builder objects.
+
+        - parameters:
+          - coder: decoder object
     */
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,7 +44,7 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
 
     // MARK: - View Setup
 
-    /**
+    /*
         View setup functions must be called after initialization.
         E.g., `viewDidLoad`.
 
@@ -58,7 +63,8 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
         This is the preferred method to use if the superview is the main view
         for the current `UIViewController`.
 
-        - Parameter bottomLayoutGuide: The `bottomLayoutGuide` for the superview.
+        - parameters:
+          - bottomLayoutGuide: The `bottomLayoutGuide` for the superview.
     */
     public func setupView(bottomLayoutGuide bottomLayoutGuide: UILayoutSupport) {
         self.bottomLayoutGuide = bottomLayoutGuide
@@ -72,6 +78,36 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     public func setupView() {
         setupConstraints()
         setupGestureRecognizers()
+    }
+
+    /**
+        Retains the visible state of the view on rotation.
+
+        I.e., if the view is fully visible, this ensures that it
+        remains fully visible on rotation.
+
+        The vertical position of the view is based on absolute points,
+        and due to the dynamic size of the view, this usually needs to
+        be readjusted on any rotation.
+
+        **Usage:**
+
+        ````
+        // In a UIViewController:
+
+         override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+            containerView.onRotate()
+         }
+
+        ````
+    */
+    public func onRotate() {
+        if(!isFullyVisible) {
+            updateVerticalConstraint(visibleAmount)
+        }
+        else {
+            updateVerticalConstraint(1.0)
+        }
     }
 
     // MARK: - Constraints
@@ -178,21 +214,28 @@ public class OMAKOPartiallyVisibleSwipableView: UIView {
     }
 
     private func slideDown() {
-        updateVerticalConstraint(self.visibleAmount)
+        updateVerticalConstraint(visibleAmount)
+        isFullyVisible = false
     }
 
     private func slideUp() {
         updateVerticalConstraint(1.0)
+        isFullyVisible = true
     }
 
-    private func updateVerticalConstraint(visibleAmount: CGFloat) {
-        verticalPositionConstraint!.constant = verticalConstraintConstant(visibleAmount)
+    private func updateVerticalConstraint(aVisibleAmount: CGFloat) {
+        if let verticalPositionConstraint = verticalPositionConstraint {
+            verticalPositionConstraint.constant =
+                verticalConstraintConstant(aVisibleAmount)
 
-        /// Layout view now that constraints have changed.
-        layoutIfNeeded()
+            /// Layout view now that constraints have changed.
+            layoutIfNeeded()
+        }
     }
 
-    private func verticalConstraintConstant(visibleAmount: CGFloat) -> CGFloat {
-        return -1 * bounds.height * visibleAmount
+    private func verticalConstraintConstant(aVisibleAmount: CGFloat) -> CGFloat {
+        /// Calculates amount of points that should be visible when the
+        /// view is partially hidden.
+        return -1 * bounds.height * aVisibleAmount
     }
 }

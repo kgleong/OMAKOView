@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-9e-V2v">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-9e-V2v">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                             </imageView>
                             <view alpha="0.59999999999999998" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhB-Ed-EKV" customClass="OMAKOPartiallyVisibleSwipableView" customModule="OMAKOView">
-                                <rect key="frame" x="131" y="246" width="310" height="131"/>
+                                <rect key="frame" x="20" y="64" width="310" height="131"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-Lc-J6i">
-                                        <rect key="frame" x="40" y="25" width="34" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="40" y="25" width="76" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -48,15 +48,16 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SV1-9e-V2v" secondAttribute="bottom" id="IOx-sM-DWw"/>
-                            <constraint firstItem="SV1-9e-V2v" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="c4Z-Od-YTN"/>
-                            <constraint firstItem="SV1-9e-V2v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="g7e-n6-Nvy"/>
-                            <constraint firstAttribute="trailing" secondItem="SV1-9e-V2v" secondAttribute="trailing" id="hCM-7q-gz9"/>
+                            <constraint firstItem="SV1-9e-V2v" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Nyt-Lg-rFq"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SV1-9e-V2v" secondAttribute="bottom" id="PjQ-Cd-PDC"/>
+                            <constraint firstItem="SV1-9e-V2v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ovK-aM-W4y"/>
+                            <constraint firstAttribute="trailing" secondItem="SV1-9e-V2v" secondAttribute="trailing" id="yBz-fo-z9r"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="zhB-Ed-EKV" id="nwt-8H-pe5"/>
                         <outlet property="descriptionLabel" destination="W3o-Af-7I3" id="dXO-PL-TWJ"/>
                         <outlet property="titleLabel" destination="Yoq-Lc-J6i" id="ye4-zl-Ab2"/>
                     </connections>
