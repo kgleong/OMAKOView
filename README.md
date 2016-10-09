@@ -19,6 +19,14 @@ Custom views included in this library:
 
 ### Usage
 
+**Height and Width constraints for the view must be set if using Interface Builder.**
+
+The `remove at build time` placeholder checkbox **MUST BE** selected on both height and width constraints.
+
+Interface builder autogenerates constraints, and this will result in constraint conflicts if the above steps are not followed.
+
+#### `UIViewController` Example
+
 ```swift
 class ViewController: UIViewController {
     @IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipeableView!
