@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2F08B6D048CB3168D235C4C7F0AEDB00 /* Pods-OMAKOView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FD3E05B8ED3EE1C8B0A2A88A3114 /* Pods-OMAKOView_Example-dummy.m */; };
-		33140A603B077E553B0149715462E4F0 /* OMAKOPartiallyVisibleSwipableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B6B53BC7B7033F0D74E5F673606492 /* OMAKOPartiallyVisibleSwipableView.swift */; };
+		3BB5C5889218EF8A61405D1861474195 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73B644F022953A089ACEB0C04CE30422 /* OMAKOPartiallyVisibleSwipeableView.swift */; };
 		3BFFD9F9B711B235A9BC00524D32DFAD /* Pods-OMAKOView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 957CE1D577374FC618A4441DFAC7E963 /* Pods-OMAKOView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443EDA600929D773D796AEE7CCCCDE9A /* Pods-OMAKOView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9025DD23AFD86FD02C23EE1903C4F /* Pods-OMAKOView_Tests-dummy.m */; };
 		6EFF1B4AD8FE4A098B33A862A4ADD71F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		B10BF2722254C6D22C2F1E88AB974273 /* OMAKOView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38957DFE3B796DE10A68598AE93B83B8 /* OMAKOView-dummy.m */; };
 		B94FCE2BE1DF6CD795FD5A85AE746A6C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		C0A5FB2F9C418C8E1C80E34D571DEE0B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		D1998713BD469620F28350F13C89158F /* OMAKOView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D573B3C86CA9348907CBCCB0ACFE9B2 /* OMAKOView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D78A4EAE8507152F011B270EC1BF610E /* OMAKOView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38957DFE3B796DE10A68598AE93B83B8 /* OMAKOView-dummy.m */; };
 		E1AB01989A9DD84A7AC5E9BA28256566 /* Pods-OMAKOView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 33F0BC2E02C95AE048299B611B7669D8 /* Pods-OMAKOView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -41,6 +41,7 @@
 		4D573B3C86CA9348907CBCCB0ACFE9B2 /* OMAKOView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OMAKOView-umbrella.h"; sourceTree = "<group>"; };
 		54345E2E6F1DB7E286A291B478F0B515 /* Pods-OMAKOView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OMAKOView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		65E7FD3E05B8ED3EE1C8B0A2A88A3114 /* Pods-OMAKOView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OMAKOView_Example-dummy.m"; sourceTree = "<group>"; };
+		73B644F022953A089ACEB0C04CE30422 /* OMAKOPartiallyVisibleSwipeableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPartiallyVisibleSwipeableView.swift; sourceTree = "<group>"; };
 		7E5A017E2F498CE11FB9BDD6FD0C7F4C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83C9025DD23AFD86FD02C23EE1903C4F /* Pods-OMAKOView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OMAKOView_Tests-dummy.m"; sourceTree = "<group>"; };
 		86873FB3AC9E7D26891BE66702055F24 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -61,7 +62,6 @@
 		D95AC5E7C2DF7ACD5A6EEFFC4BD44F95 /* Pods-OMAKOView_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OMAKOView_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		DE9B2C7234240DD9846062EE55B313A5 /* Pods-OMAKOView_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-OMAKOView_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		E40B71C41B5148E4B8D9A07404058813 /* Pods-OMAKOView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-OMAKOView_Example-frameworks.sh"; sourceTree = "<group>"; };
-		F9B6B53BC7B7033F0D74E5F673606492 /* OMAKOPartiallyVisibleSwipableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPartiallyVisibleSwipableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 		22DE407CD1658272844A0CE01B99781E /* OMAKOView */ = {
 			isa = PBXGroup;
 			children = (
-				5764F6CA457EAF18E1CB8D072DBF4EFD /* Classes */,
+				F757583867A379140D69085C10B2FECF /* Classes */,
 			);
 			path = OMAKOView;
 			sourceTree = "<group>";
@@ -133,14 +133,6 @@
 				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		5764F6CA457EAF18E1CB8D072DBF4EFD /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				F9B6B53BC7B7033F0D74E5F673606492 /* OMAKOPartiallyVisibleSwipableView.swift */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -222,6 +214,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F757583867A379140D69085C10B2FECF /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				73B644F022953A089ACEB0C04CE30422 /* OMAKOPartiallyVisibleSwipeableView.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -256,7 +256,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B6F872F2819159EC1D36A0490101D06 /* Build configuration list for PBXNativeTarget "OMAKOView" */;
 			buildPhases = (
-				268814F89CE15640CD3DCE0084022151 /* Sources */,
+				16800A38C67C540BD7142A8841E1BD39 /* Sources */,
 				80899B9816F9604CDB14DF970B630CDB /* Frameworks */,
 				9A57C3E7803C98F8D5EE198B381E5806 /* Headers */,
 			);
@@ -333,12 +333,12 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		268814F89CE15640CD3DCE0084022151 /* Sources */ = {
+		16800A38C67C540BD7142A8841E1BD39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				33140A603B077E553B0149715462E4F0 /* OMAKOPartiallyVisibleSwipableView.swift in Sources */,
-				B10BF2722254C6D22C2F1E88AB974273 /* OMAKOView-dummy.m in Sources */,
+				3BB5C5889218EF8A61405D1861474195 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */,
+				D78A4EAE8507152F011B270EC1BF610E /* OMAKOView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

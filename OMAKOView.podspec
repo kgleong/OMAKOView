@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'OMAKOView'
-  s.version          = '1.1.0'
+  s.version          = '2.0.0'
   s.summary          = 'Custom user interface elements for iOS applications.'
 
 # This description is used to generate tags and improve search results.
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
   This is a collection of UI elements for use in iOS applications.
 
   Includes:
-  * OMAKOPartiallyVisibleSwipableView
+  * OMAKOPartiallyVisibleSwipeableView
   DESC
 
   s.homepage         = 'https://github.com/kgleong/OMAKOView'

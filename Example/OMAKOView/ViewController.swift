@@ -10,7 +10,7 @@ import UIKit
 import OMAKOView
 
 class ViewController: UIViewController {
-    @IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipableView!
+    @IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipeableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
 

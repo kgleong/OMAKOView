@@ -1,11 +1,11 @@
-//  OMAKOPartiallyVisibleSwipableView.swift
+//  OMAKOPartiallyVisibleSwipeableView.swift
 //
 //  Created by Kevin Leong on 10/4/16.
 //  Copyright © 2016 Kevin Leong. All rights reserved.
 import UIKit
 
 @IBDesignable
-public class OMAKOPartiallyVisibleSwipableView: UIView {
+public class OMAKOPartiallyVisibleSwipeableView: UIView {
     /// Positioning
     @IBInspectable var visibleAmount: CGFloat = 0.4
 

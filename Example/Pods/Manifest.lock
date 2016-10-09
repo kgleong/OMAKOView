@@ -1,5 +1,5 @@
 PODS:
-  - OMAKOView (1.0.4)
+  - OMAKOView (1.1.0)
 
 DEPENDENCIES:
   - OMAKOView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  OMAKOView: 39d1d03e31e234ec4a3cb6ac72a5a889d04e8a26
+  OMAKOView: 0f7be89b761fda3beaa40299634a5f986cc2f18b
 
 PODFILE CHECKSUM: 534af7f677bb481dc002100de2012a69899a181a
 
