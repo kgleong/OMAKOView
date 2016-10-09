@@ -25,11 +25,10 @@ Pod::Spec.new do |s|
   DESC
 
   s.homepage         = 'https://github.com/kgleong/OMAKOView'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://raw.githubusercontent.com/kgleong/OMAKOView/master/images/partially-visible-swipeable-demo-1.gif'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Kevin Leong' => 'kgleong@gmail.com' }
   s.source           = { :git => 'https://github.com/kgleong/OMAKOView.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
