@@ -11,7 +11,7 @@ Custom views included in this library:
 
 |Name|Description|
 |----|-----------|
-|[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide it's content.|
+|[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide its content.|
 
 ## Partially Visible Swipeable View
 
