@@ -40,6 +40,9 @@ class ViewController: UIViewController {
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        // Must be called on device orientation changes.
+        // Screen rotations will change the height of the `container view`,
+        // and `onRotate()` accounts for any changes.
         containerView.onRotate()
     }
 }
