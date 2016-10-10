@@ -19,11 +19,15 @@ Custom views included in this library:
 
 ### Usage
 
-**Height and Width constraints for the view must be set if using Interface Builder.**
+#### Important Note on Constraints
 
-The `remove at build time` placeholder checkbox **MUST BE** selected on both height and width constraints.
+**A width constraint for the view must be set if using Interface Builder.**
+
+The `remove at build time` placeholder checkbox **MUST BE** selected for the width constraint.
 
 Interface builder autogenerates constraints, and this will result in constraint conflicts if the above steps are not followed.
+
+The same needs to be done for **height** if the height of the view is dynamic.  E.g., multiline labels that contain dynamic text.
 
 #### `UIViewController` Example
 
@@ -64,6 +68,9 @@ class ViewController: UIViewController {
 ```
 
 ### IBInspectable Properties
+
+![Partially Visible Swipeable IBInspectable properties](/images/partially-visible-swipeable-ib-inspectable.png)
+
 |Name|Type|Description|Values|
 |----|----|-----------|------|
 |**visible amount**|`CGFloat`|Proportion of the view's height that should be initially visible.|A value of `1.0` is fully visible, and `0.0` is completely hidden. Default value is `0.4`, which makes 40% of the view's height visible.|
