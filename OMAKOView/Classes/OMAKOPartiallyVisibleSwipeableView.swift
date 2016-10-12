@@ -142,7 +142,7 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
                 constant: 0
             )
         )
-
+        
         NSLayoutConstraint.activateConstraints(constraintsList)
 
         /**
