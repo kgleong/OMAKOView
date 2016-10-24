@@ -84,7 +84,7 @@ The properties below adjust the animation oscillation and bounce .  See the Appl
 |----|----|-----------|------|
 |**duration**|`CGFloat`|How long the animation should take, in seconds.|If `<= 0`, no animation will be applied.  Default is set to `1.5` seconds|
 |**damping ratio**|`CGFloat`| Amount of bouncing desired.|Use `1` to smoothly decelerate with no oscillation.  Values closer to `0` will increase oscillation/bouncing. The higher the value, the faster the oscillations will cease. Default is set to `0.5`.|
-|**spring speed**|`CGFloat`| The spring's initial velocity. The damping ratio will proportionally decrement this value until the velocity reaches 0.|Higher values will increase the oscillations speed. Default is set to `0.5`.|
+|**spring speed**|`CGFloat`| The spring's initial velocity. The damping ratio will proportionally decrement this value until the velocity reaches 0.|Higher values will increase the oscillations' speed. Default is set to `0.5`.|
 
 ## Example
 
