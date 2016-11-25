@@ -5,7 +5,7 @@
 import UIKit
 
 @IBDesignable
-public class OMAKOPartiallyVisibleSwipeableView: UIView {
+open class OMAKOPartiallyVisibleSwipeableView: UIView {
     /// Positioning
     @IBInspectable var visibleAmount: CGFloat = 0.4
 
@@ -21,26 +21,6 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
     var bottomLayoutGuide: UILayoutSupport?
     var isFullyVisible = false
     var verticalPositionConstraint: NSLayoutConstraint?
-
-    /**
-        Standard Initializer
-
-        - parameters:
-          - frame: The view's frame.
-    */
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-
-    /**
-        Required initializer for Interface Builder objects.
-
-        - parameters:
-          - coder: decoder object
-    */
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
 
     // MARK: - View Setup
 
@@ -66,7 +46,7 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
         - parameters:
           - bottomLayoutGuide: The `bottomLayoutGuide` for the superview.
     */
-    public func setupView(bottomLayoutGuide bottomLayoutGuide: UILayoutSupport) {
+    open func setupView(bottomLayoutGuide: UILayoutSupport) {
         self.bottomLayoutGuide = bottomLayoutGuide
         setupView()
     }
@@ -75,7 +55,7 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
         Same as `setupView(bottomLayoutGuide:)`, but uses the superview's bottom
         attribute as a reference to vertically position the view.
     */
-    public func setupView() {
+    open func setupView() {
         setupConstraints()
         setupGestureRecognizers()
     }
@@ -101,18 +81,18 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
 
         ````
     */
-    public func onRotate() {
+    open func onRotate() {
         if(!isFullyVisible) {
-            updateVerticalConstraint(visibleAmount)
+            updateVerticalConstraint(displayPercentage: visibleAmount)
         }
         else {
-            updateVerticalConstraint(1.0)
+            updateVerticalConstraint(displayPercentage: 1.0)
         }
     }
 
     // MARK: - Constraints
 
-    private func setupConstraints() {
+    fileprivate func setupConstraints() {
         var constraintsList = [NSLayoutConstraint]()
 
         /// Center within superview if necessary
@@ -120,10 +100,10 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
             constraintsList.append(
                 NSLayoutConstraint(
                     item: self,
-                    attribute: .CenterX,
-                    relatedBy: .Equal,
+                    attribute: .centerX,
+                    relatedBy: .equal,
                     toItem: superview,
-                    attribute: .CenterX,
+                    attribute: .centerX,
                     multiplier: 1,
                     constant: 0
                 )
@@ -134,16 +114,16 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
         constraintsList.append(
             NSLayoutConstraint(
                 item: self,
-                attribute: .Width,
-                relatedBy: .Equal,
+                attribute: .width,
+                relatedBy: .equal,
                 toItem: superview,
-                attribute: .Width,
+                attribute: .width,
                 multiplier: relativeWidth,
                 constant: 0
             )
         )
         
-        NSLayoutConstraint.activateConstraints(constraintsList)
+        NSLayoutConstraint.activate(constraintsList)
 
         /**
             Layout the view, since concrete bounds values are
@@ -154,44 +134,44 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
 
         /// Vertical positioning uses bottom of superview by default.
         var verticalPositionToItem: AnyObject? = superview
-        var verticalPositionAttribute = NSLayoutAttribute.Bottom
+        var verticalPositionAttribute = NSLayoutAttribute.bottom
 
         /// Use the bottom layout guide if specified.
         if let unwrappedBottomLayoutGuide = bottomLayoutGuide {
             verticalPositionToItem = unwrappedBottomLayoutGuide
-            verticalPositionAttribute = NSLayoutAttribute.Top
+            verticalPositionAttribute = NSLayoutAttribute.top
         }
 
         verticalPositionConstraint =
             NSLayoutConstraint(
-                item: self,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: verticalPositionToItem,
+                item: verticalPositionToItem,
                 attribute: verticalPositionAttribute,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: .top,
                 multiplier: 1,
-                constant: verticalConstraintConstant(self.visibleAmount)
+                constant: verticalConstraintConstant(displayPercentage: visibleAmount)
         )
 
-        NSLayoutConstraint.activateConstraints([verticalPositionConstraint!])
+        NSLayoutConstraint.activate([verticalPositionConstraint!])
     }
 
     // MARK: - Gestures
 
-    private func setupGestureRecognizers() {
+    fileprivate func setupGestureRecognizers() {
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(onSwipeUp))
-        swipeUpRecognizer.direction = UISwipeGestureRecognizerDirection.Up
+        swipeUpRecognizer.direction = UISwipeGestureRecognizerDirection.up
 
         let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(onSwipeDown))
-        swipeDownRecognizer.direction = UISwipeGestureRecognizerDirection.Down
+        swipeDownRecognizer.direction = UISwipeGestureRecognizerDirection.down
 
         addGestureRecognizer(swipeUpRecognizer)
         addGestureRecognizer(swipeDownRecognizer)
     }
 
-    @objc private func onSwipeUp() {
-        UIView.animateWithDuration(
-            duration,
+    @objc fileprivate func onSwipeUp() {
+        UIView.animate(
+            withDuration: duration,
             delay: 0,
             usingSpringWithDamping: dampingRatio,
             initialSpringVelocity: springSpeed,
@@ -201,9 +181,9 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
         )
     }
 
-    @objc private func onSwipeDown() {
-        UIView.animateWithDuration(
-            duration,
+    @objc fileprivate func onSwipeDown() {
+        UIView.animate(
+            withDuration: duration,
             delay: 0,
             usingSpringWithDamping: dampingRatio,
             initialSpringVelocity: springSpeed,
@@ -213,29 +193,45 @@ public class OMAKOPartiallyVisibleSwipeableView: UIView {
         )
     }
 
-    private func slideDown() {
-        updateVerticalConstraint(visibleAmount)
+    fileprivate func slideDown() {
+        updateVerticalConstraint(displayPercentage: visibleAmount)
         isFullyVisible = false
     }
 
-    private func slideUp() {
-        updateVerticalConstraint(1.0)
+    fileprivate func slideUp() {
+        updateVerticalConstraint(displayPercentage: 1.0)
         isFullyVisible = true
     }
 
-    private func updateVerticalConstraint(aVisibleAmount: CGFloat) {
+    /**
+        Uses the superview's `bottomLayoutGuide` as a reference to vertically
+        place the view.
+
+        This is the preferred method to use if the superview is the main view
+        for the current `UIViewController`.
+
+        - parameters:
+            - displayPercentage: Percentage of the view to display.  E.g., 0.1 => 10%
+     */
+    fileprivate func updateVerticalConstraint(displayPercentage: CGFloat) {
         if let verticalPositionConstraint = verticalPositionConstraint {
             verticalPositionConstraint.constant =
-                verticalConstraintConstant(aVisibleAmount)
+                verticalConstraintConstant(displayPercentage: displayPercentage)
 
             /// Layout view now that constraints have changed.
-            layoutIfNeeded()
+            if let parentView = superview {
+                /// Required to call on the superview as of Swift 3 upgrade.
+                parentView.layoutIfNeeded()
+            }
+            else {
+                layoutIfNeeded()
+            }
         }
     }
 
-    private func verticalConstraintConstant(aVisibleAmount: CGFloat) -> CGFloat {
+    fileprivate func verticalConstraintConstant(displayPercentage: CGFloat) -> CGFloat {
         /// Calculates amount of points that should be visible when the
         /// view is partially hidden.
-        return -1 * bounds.height * aVisibleAmount
+        return bounds.height * displayPercentage
     }
 }

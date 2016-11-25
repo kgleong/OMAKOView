@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         /// Make labels multiline and add text
         titleLabel.numberOfLines = 0
         titleLabel.text = titleLoremIpsum
-        titleLabel.font = UIFont.boldSystemFontOfSize(titleLabel.font.pointSize)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: titleLabel.font.pointSize)
 
         descriptionLabel.numberOfLines = 0
         descriptionLabel.text = descriptionLoremIpsum
@@ -33,12 +33,12 @@ class ViewController: UIViewController {
         containerView.setupView(bottomLayoutGuide: bottomLayoutGuide)
     }
 
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         containerView.onRotate()
     }
 
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 }
 
