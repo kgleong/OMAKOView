@@ -133,12 +133,12 @@ open class OMAKOPartiallyVisibleSwipeableView: UIView {
         layoutIfNeeded()
 
         /// Vertical positioning uses bottom of superview by default.
-        var verticalPositionToItem: AnyObject? = superview
+        var verticalPositionToItem: Any? = superview
         var verticalPositionAttribute = NSLayoutAttribute.bottom
 
         /// Use the bottom layout guide if specified.
-        if let unwrappedBottomLayoutGuide = bottomLayoutGuide {
-            verticalPositionToItem = unwrappedBottomLayoutGuide
+        if let bottomLayoutGuide = bottomLayoutGuide {
+            verticalPositionToItem = bottomLayoutGuide
             verticalPositionAttribute = NSLayoutAttribute.top
         }
 
