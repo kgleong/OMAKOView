@@ -9,7 +9,7 @@
 import UIKit
 import OMAKOView
 
-class ViewController: UIViewController {
+class PartiallyVisibleSwipeableViewController: UIViewController {
     @IBOutlet weak var containerView: OMAKOPartiallyVisibleSwipeableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -20,7 +20,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
 
+    // MARK: - View Setup
+
+    fileprivate func setupView() {
         /// Make labels multiline and add text
         titleLabel.numberOfLines = 0
         titleLabel.text = titleLoremIpsum
@@ -35,10 +40,6 @@ class ViewController: UIViewController {
 
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         containerView.onRotate()
-    }
-
-    override var preferredStatusBarStyle : UIStatusBarStyle {
-        return .lightContent
     }
 }
 

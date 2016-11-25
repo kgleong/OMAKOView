@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KwI-pZ-Ftl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Partial-->
+        <scene sceneID="lg6-UL-Jgy">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="OMAKOView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mrT-mX-8A2" customClass="PartiallyVisibleSwipeableViewController" customModule="OMAKOView_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="koY-g0-Q3g"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Oj-xv-3lW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <view key="view" contentMode="scaleToFill" id="5qu-yT-nco">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-9e-V2v">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-9e-V2v">
+                                <rect key="frame" x="-113" y="20" width="600" height="603"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zhB-Ed-EKV" customClass="OMAKOPartiallyVisibleSwipeableView" customModule="OMAKOView">
-                                <rect key="frame" x="26" y="67" width="310" height="115"/>
+                                <rect key="frame" x="32" y="138" width="310" height="115"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yoq-Lc-J6i">
                                         <rect key="frame" x="10" y="10" width="76" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="thumbs-up" translatesAutoresizingMaskIntoConstraints="NO" id="6w4-kD-GPb">
@@ -43,7 +48,7 @@
                                             <constraint firstAttribute="width" constant="33" id="Z9q-P1-fWb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="thumbs-down" translatesAutoresizingMaskIntoConstraints="NO" id="0Pj-5r-K6d">
@@ -56,7 +61,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3o-Af-7I3">
                                         <rect key="frame" x="10" y="81" width="105" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="25%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lla-Sm-odb">
@@ -65,11 +70,11 @@
                                             <constraint firstAttribute="height" constant="21" id="Lbw-9z-bAv"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="W3o-Af-7I3" secondAttribute="bottom" constant="10" id="0gF-zj-N2y"/>
                                     <constraint firstItem="6w4-kD-GPb" firstAttribute="top" secondItem="Yoq-Lc-J6i" secondAttribute="bottom" constant="20" id="1G8-kG-y9c"/>
@@ -92,27 +97,40 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="SV1-9e-V2v" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="Nyt-Lg-rFq"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="SV1-9e-V2v" secondAttribute="bottom" id="PjQ-Cd-PDC"/>
-                            <constraint firstItem="SV1-9e-V2v" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="ovK-aM-W4y"/>
-                            <constraint firstAttribute="trailing" secondItem="SV1-9e-V2v" secondAttribute="trailing" id="yBz-fo-z9r"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Partial" image="circle" id="P5b-qT-QD2"/>
                     <connections>
-                        <outlet property="containerView" destination="zhB-Ed-EKV" id="nwt-8H-pe5"/>
-                        <outlet property="descriptionLabel" destination="W3o-Af-7I3" id="dXO-PL-TWJ"/>
-                        <outlet property="titleLabel" destination="Yoq-Lc-J6i" id="ye4-zl-Ab2"/>
+                        <outlet property="containerView" destination="zhB-Ed-EKV" id="yAE-EQ-hT7"/>
+                        <outlet property="descriptionLabel" destination="W3o-Af-7I3" id="eWH-XO-cNJ"/>
+                        <outlet property="titleLabel" destination="Yoq-Lc-J6i" id="c1n-Bs-cEk"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J7v-kE-Y4b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="252" y="389"/>
+            <point key="canvasLocation" x="774" y="229"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hK1-Dd-hYM">
+            <objects>
+                <tabBarController id="KwI-pZ-Ftl" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="nqV-4g-XGr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="mrT-mX-8A2" kind="relationship" relationship="viewControllers" id="5am-Z7-qke"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4RI-fQ-wXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="421"/>
         </scene>
     </scenes>
     <resources>
-        <image name="background" width="361" height="640"/>
+        <image name="background" width="360" height="640"/>
+        <image name="circle" width="24" height="24"/>
         <image name="thumbs-down" width="24" height="24"/>
         <image name="thumbs-up" width="24" height="24"/>
     </resources>
