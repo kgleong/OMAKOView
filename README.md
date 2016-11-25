@@ -8,7 +8,7 @@
 
 |Description|Specification|
 |----|-----------|
-|Swift Language Version| 3|
+|Language| Swift 3|
 
 ## Overview
 
