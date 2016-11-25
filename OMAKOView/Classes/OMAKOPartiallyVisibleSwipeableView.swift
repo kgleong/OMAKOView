@@ -133,27 +133,29 @@ open class OMAKOPartiallyVisibleSwipeableView: UIView {
         layoutIfNeeded()
 
         /// Vertical positioning uses bottom of superview by default.
-        var verticalPositionToItem: Any? = superview
+        var verticalPositionItem: Any? = superview
         var verticalPositionAttribute = NSLayoutAttribute.bottom
 
         /// Use the bottom layout guide if specified.
         if let bottomLayoutGuide = bottomLayoutGuide {
-            verticalPositionToItem = bottomLayoutGuide
+            verticalPositionItem = bottomLayoutGuide
             verticalPositionAttribute = NSLayoutAttribute.top
         }
 
-        verticalPositionConstraint =
-            NSLayoutConstraint(
-                item: verticalPositionToItem,
-                attribute: verticalPositionAttribute,
-                relatedBy: .equal,
-                toItem: self,
-                attribute: .top,
-                multiplier: 1,
-                constant: verticalConstraintConstant(displayPercentage: visibleAmount)
-        )
+        if let verticalPositionItem = verticalPositionItem {
+            verticalPositionConstraint =
+                NSLayoutConstraint(
+                    item: verticalPositionItem,
+                    attribute: verticalPositionAttribute,
+                    relatedBy: .equal,
+                    toItem: self,
+                    attribute: .top,
+                    multiplier: 1,
+                    constant: verticalConstraintConstant(displayPercentage: visibleAmount)
+            )
 
-        NSLayoutConstraint.activate([verticalPositionConstraint!])
+            NSLayoutConstraint.activate([verticalPositionConstraint!])
+        }
     }
 
     // MARK: - Gestures
