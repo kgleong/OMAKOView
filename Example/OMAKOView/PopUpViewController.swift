@@ -2,20 +2,37 @@ import UIKit
 import OMAKOView
 
 class PopUpViewController: UIViewController {
+    @IBOutlet weak var popUpTypeSegmentedControl: UISegmentedControl!
 
+    var popUpView: OMAKOPopUpView?
+    var defaultTitleString: NSMutableAttributedString = NSMutableAttributedString(string: "Enter a Title Here")
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
 
+    // MARK: - Pop Up View
+
+    fileprivate func displayTitleOnlyPopUp() {
+        popUpView = OMAKOPopUpView()
+
+        guard let popUpView = popUpView else {
+            return
+        }
+
+        popUpView.titleText = defaultTitleString
+
+        popUpView.display(parentView: view, withDuration: nil, completion: nil)
+    }
+
     // MARK: - Interface Builder Actions
 
-    @IBAction func onPopUpTypeSelect(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
+    @IBAction func onDisplayPopUp(_ sender: UIButton) {
+        switch popUpTypeSegmentedControl.selectedSegmentIndex {
         case 0:
-            print(String(sender.selectedSegmentIndex))
+            displayTitleOnlyPopUp()
         default:
-            print(String(sender.selectedSegmentIndex))
+            print(String(popUpTypeSegmentedControl.selectedSegmentIndex))
         }
     }
 

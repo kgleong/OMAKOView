@@ -1,5 +1,7 @@
 use_frameworks!
 
+platform :ios, '10.1'
+
 target 'OMAKOView_Example' do
   pod 'OMAKOView', :path => '../'
 

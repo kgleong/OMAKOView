@@ -12,12 +12,16 @@ open class OMAKOPopUpView: UIView {
     open var titleFontName: String?
     open var bodyFontName: String?
 
-    open var titleFontSize: CGFloat = 18.0
+    open var titleFontSize: CGFloat = 17.0
     open var bodyFontSize: CGFloat = 15.0
+
+    open var titleFontColor: UIColor = UIColor.red
+    open var bodyFontColor: UIColor = UIColor.green
 
     /// Layout
 
     open var padding: CGFloat = 10.0
+    open var cornerRadius: CGFloat? = 10.0
 
     // MARK: - Private variables
 
@@ -25,9 +29,10 @@ open class OMAKOPopUpView: UIView {
     fileprivate var bodyLabel: UILabel?
     fileprivate var spinner: UIView?
 
-    fileprivate var showSpinner: Bool = false
+    fileprivate var defaultBackgroundColor: UIColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.5)
 
-    fileprivate var defaultBackgroundColor: UIColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.75)
+    fileprivate var showSpinner: Bool = false
+    fileprivate var constraintList = [NSLayoutConstraint]()
 
     // MARK: - Public API
 
@@ -40,31 +45,126 @@ open class OMAKOPopUpView: UIView {
         }
 
         UIView.animate(withDuration: duration, animations: {
-            self.alpha = 0
-        }, completion: {
-            removeFromSuperview()
+            self.alpha = 0.0
+        }, completion: { (Boolean) -> Void
+            in
 
             guard let completion = completion else {
                 return
             }
 
+            /// All constraints must be deactivated before removing a view
+            NSLayoutConstraint.deactivate(self.constraintList)
+            self.removeFromSuperview()
+
             completion()
         })
     }
 
-    open func hide(@escaping onCompletion: (() -> Void)?) {
+    open func hide(onCompletion: (() -> Void)?) {
         guard let parentView = superview else {
-            print("Pop up must be part of a view hierarchy.  No superview detected")
+            print("Pop up must be part of a view hierarchy.  No superview detected.")
             return
         }
     }
 
     // MARK: - UIView Methods
 
-    override func didMoveToSuperview() {
+    override open func didMoveToSuperview() {
         setupView()
         setupConstraints()
     }
+
+    // MARK: - Constraint Setup
+
+    fileprivate func setupConstraints() {
+        setupSelfConstraints()
+        setupTitleLabelConstraints()
+
+        NSLayoutConstraint.activate(constraintList)
+    }
+
+    fileprivate func setupSelfConstraints() {
+        /// Horizontal and vertical centering
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .centerX,
+                relatedBy: .equal,
+                toItem: superview,
+                attribute: .centerX,
+                multiplier: 1,
+                constant: 0)
+        )
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .centerY,
+                relatedBy: .equal,
+                toItem: superview,
+                attribute: .centerY,
+                multiplier: 1,
+                constant: 0)
+        )
+
+        /// Width relative to contents
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .width,
+                relatedBy: .greaterThanOrEqual,
+                toItem: titleLabel,
+                attribute: .width,
+                multiplier: 1,
+                constant: padding * 2
+            )
+        )
+    }
+
+    fileprivate func setupTitleLabelConstraints() {
+        /// Padding
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: titleLabel,
+                attribute: .top,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: .top,
+                multiplier: 1,
+                constant: padding)
+        )
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .bottom,
+                relatedBy: .equal,
+                toItem: titleLabel,
+                attribute: .bottom,
+                multiplier: 1,
+                constant: padding
+            )
+        )
+
+        /// Horizontal centering
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: titleLabel,
+                attribute: .centerX,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: .centerX,
+                multiplier: 1,
+                constant: 0
+            )
+        )
+    }
+
 
     // MARK: - View Setup
 
@@ -75,31 +175,70 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func setupSelfView() {
+        translatesAutoresizingMaskIntoConstraints = false
+
         if backgroundColor == nil {
             self.backgroundColor = defaultBackgroundColor
         }
+
+        if let cornerRadius = cornerRadius {
+            clipsToBounds = true
+            layer.cornerRadius = cornerRadius
+        }
+
     }
 
     fileprivate func setupTitleLabel() {
-        guard let titleText = titleText else {
+        titleLabel = createLabel(
+            attributedText: titleText,
+            fontName: titleFontName,
+            fontSize: titleFontSize,
+            fontColor: titleFontColor,
+            boldByDefault: true
+        )
+
+        guard let titleLabel = titleLabel else {
             return
         }
 
-        var font: UIFont =
-            let titleFontName = titleFontName {
-                UIFont(name: titleFontName, size: titleFontSize)
-            }
-            else {
-                UIFont.boldSystemFont(ofSize: titleFontSize)
-            }
+        addSubview(titleLabel)
+    }
 
-        var fullRange: NSRange = NSMakeRange(0, titleText.length)
+    fileprivate func createLabel(
+            attributedText: NSMutableAttributedString?,
+            fontName: String?,
+            fontSize: CGFloat,
+            fontColor: UIColor,
+            boldByDefault: Bool = false
+        ) -> UILabel? {
 
-        titleText.addAttribute(NSFontAttributeName, value: font, range: fullRange)
-        titleText.addAttribute(NSParagraphStyleAttributeName, value: defaultParagraphStyle(), range: fullRange)
+        guard let attributedText = attributedText else {
+            return nil
+        }
 
-        titleLabel = UILabel()
-        titleLabel?.text = titleText
+        var font: UIFont?
+
+        if let fontName = fontName {
+            font = UIFont(name: fontName, size: fontSize)
+        }
+        else if boldByDefault {
+            font = UIFont.boldSystemFont(ofSize: fontSize)
+        }
+        else {
+            font = UIFont.systemFont(ofSize: fontSize)
+        }
+
+        var fullRange: NSRange = NSMakeRange(0, attributedText.length)
+
+        attributedText.addAttribute(NSFontAttributeName, value: font, range: fullRange)
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value: defaultParagraphStyle(), range: fullRange)
+        attributedText.addAttribute(NSForegroundColorAttributeName, value: titleFontColor, range: fullRange)
+
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.attributedText = attributedText
+
+        return label
     }
 
     fileprivate func setupBodyLabel() {
@@ -109,13 +248,9 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func defaultParagraphStyle() -> NSMutableParagraphStyle {
-        paragraphStyle = NSMutableParagraphStyle()
+        var paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-    }
 
-    // MARK: - Constraint Setup
-
-    fileprivate func setupConstraints() {
-
+        return paragraphStyle
     }
 }
