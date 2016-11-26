@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -139,7 +140,35 @@
                     <view key="view" contentMode="scaleToFill" id="JYm-0f-dud">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0q6-VN-Qhg">
+                                <rect key="frame" x="26" y="30" width="323" height="29"/>
+                                <segments>
+                                    <segment title="Title"/>
+                                    <segment title="Body"/>
+                                    <segment title="Loading 1"/>
+                                    <segment title="Loading 2"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onPopUpTypeSelect:" destination="Mgy-IE-eJM" eventType="valueChanged" id="kWX-Wh-hUI"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-Xk-vdV">
+                                <rect key="frame" x="144" y="578" width="87" height="30"/>
+                                <state key="normal" title="Hide Pop Up"/>
+                                <connections>
+                                    <action selector="onHideTap:" destination="Mgy-IE-eJM" eventType="touchUpInside" id="F0E-yK-bXS"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bpp-B9-E2L" firstAttribute="top" secondItem="9XB-Xk-vdV" secondAttribute="bottom" constant="10" id="65s-1G-fN9"/>
+                            <constraint firstItem="0q6-VN-Qhg" firstAttribute="leading" secondItem="JYm-0f-dud" secondAttribute="leadingMargin" constant="10" id="BwD-Ve-XOB"/>
+                            <constraint firstItem="0q6-VN-Qhg" firstAttribute="top" secondItem="LuK-6z-vR2" secondAttribute="bottom" constant="10" id="Euf-UX-NqQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0q6-VN-Qhg" secondAttribute="trailing" constant="10" id="LLY-xf-MgT"/>
+                            <constraint firstItem="9XB-Xk-vdV" firstAttribute="centerX" secondItem="JYm-0f-dud" secondAttribute="centerX" id="n8c-9a-O3v"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pop Up" image="hexagon" id="czE-dN-4bp"/>
                 </viewController>
