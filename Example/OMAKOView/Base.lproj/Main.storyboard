@@ -121,16 +121,37 @@
                     </tabBar>
                     <connections>
                         <segue destination="mrT-mX-8A2" kind="relationship" relationship="viewControllers" id="5am-Z7-qke"/>
+                        <segue destination="Mgy-IE-eJM" kind="relationship" relationship="viewControllers" id="dvX-Sz-anp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RI-fQ-wXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-44" y="421"/>
         </scene>
+        <!--Pop Up-->
+        <scene sceneID="Qqr-no-0Zh">
+            <objects>
+                <viewController id="Mgy-IE-eJM" customClass="PopUpViewController" customModule="OMAKOView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LuK-6z-vR2"/>
+                        <viewControllerLayoutGuide type="bottom" id="bpp-B9-E2L"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JYm-0f-dud">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Pop Up" image="hexagon" id="czE-dN-4bp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R4n-zI-2pV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="772" y="893"/>
+        </scene>
     </scenes>
     <resources>
         <image name="background" width="360" height="640"/>
         <image name="circle" width="24" height="24"/>
+        <image name="hexagon" width="24" height="24"/>
         <image name="thumbs-down" width="24" height="24"/>
         <image name="thumbs-up" width="24" height="24"/>
     </resources>

@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		9F6C58C71DE998EB00044D49 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C58C61DE998EB00044D49 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7BF63FA4202628649AA18CCA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		896CD04A19A30E7225EDFF05 /* Pods-OMAKOView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMAKOView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMAKOView_Tests/Pods-OMAKOView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F6C58C61DE998EB00044D49 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		A7E63AAB726D73BBA13C843C /* OMAKOView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OMAKOView.podspec; path = ../OMAKOView.podspec; sourceTree = "<group>"; };
 		D367E6B4D988C5D72B5157E6 /* Pods-OMAKOView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMAKOView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMAKOView_Example/Pods-OMAKOView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FA1CC23D93FC892F69ABB999 /* Pods-OMAKOView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMAKOView_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OMAKOView_Tests/Pods-OMAKOView_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				9F6C58C61DE998EB00044D49 /* PopUpViewController.swift */,
 			);
 			name = "Example for OMAKOView";
 			path = OMAKOView;
@@ -354,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* PartiallyVisiableSwipeableViewController.swift in Sources */,
+				9F6C58C71DE998EB00044D49 /* PopUpViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
