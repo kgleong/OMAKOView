@@ -48,31 +48,42 @@ open class OMAKOPopUpView: UIView {
             self.alpha = 0.0
         }, completion: { (Boolean) -> Void
             in
+            
+            self.removeFromSuperview()
 
             guard let completion = completion else {
                 return
             }
-
-            /// All constraints must be deactivated before removing a view
-            NSLayoutConstraint.deactivate(self.constraintList)
-            self.removeFromSuperview()
 
             completion()
         })
     }
 
     open func hide(onCompletion: (() -> Void)?) {
-        guard let parentView = superview else {
+        guard superview != nil else {
             print("Pop up must be part of a view hierarchy.  No superview detected.")
             return
         }
+
+        removeFromSuperview()
     }
 
     // MARK: - UIView Methods
 
     override open func didMoveToSuperview() {
-        setupView()
-        setupConstraints()
+        super.didMoveToSuperview()
+
+        /*
+            `didMoveToSuperview` and `willMoveToSuperview` are called
+            by `removeFromSuperview`, which calls `willMove(toSuperview: nil)`.
+         
+            `nil` check prevents re-creating constraints and views when
+            the pop up is removed from its parent view.
+        */
+        if superview != nil {
+            setupView()
+            setupConstraints()
+        }
     }
 
     // MARK: - Constraint Setup
@@ -80,6 +91,7 @@ open class OMAKOPopUpView: UIView {
     fileprivate func setupConstraints() {
         setupSelfConstraints()
         setupTitleLabelConstraints()
+        setupBodyLabelConstraints()
 
         NSLayoutConstraint.activate(constraintList)
     }
@@ -122,9 +134,41 @@ open class OMAKOPopUpView: UIView {
                 constant: padding * 2
             )
         )
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .width,
+                relatedBy: .greaterThanOrEqual,
+                toItem: bodyLabel,
+                attribute: .width,
+                multiplier: 1,
+                constant: padding * 2
+            )
+        )
+
+        /// Positioning if no body text is displayed
+
+        let lastView: UIView? = bodyLabel == nil ? titleLabel : bodyLabel
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .bottom,
+                relatedBy: .equal,
+                toItem: lastView,
+                attribute: .bottom,
+                multiplier: 1,
+                constant: padding
+            )
+        )
     }
 
     fileprivate func setupTitleLabelConstraints() {
+        guard let titleLabel = titleLabel else {
+            return
+        }
+
         /// Padding
 
         constraintList.append(
@@ -136,18 +180,6 @@ open class OMAKOPopUpView: UIView {
                 attribute: .top,
                 multiplier: 1,
                 constant: padding)
-        )
-
-        constraintList.append(
-            NSLayoutConstraint(
-                item: self,
-                attribute: .bottom,
-                relatedBy: .equal,
-                toItem: titleLabel,
-                attribute: .bottom,
-                multiplier: 1,
-                constant: padding
-            )
         )
 
         /// Horizontal centering
@@ -165,6 +197,38 @@ open class OMAKOPopUpView: UIView {
         )
     }
 
+    fileprivate func setupBodyLabelConstraints() {
+        guard let bodyLabel = bodyLabel else {
+            return
+        }
+
+        /// Padding
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: bodyLabel,
+                attribute: .top,
+                relatedBy: .equal,
+                toItem: titleLabel,
+                attribute: .bottom,
+                multiplier: 1,
+                constant: padding)
+        )
+
+        /// Horizontal centering
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: bodyLabel,
+                attribute: .centerX,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: .centerX,
+                multiplier: 1,
+                constant: 0
+            )
+        )
+    }
 
     // MARK: - View Setup
 
@@ -204,6 +268,24 @@ open class OMAKOPopUpView: UIView {
         addSubview(titleLabel)
     }
 
+    fileprivate func setupBodyLabel() {
+        bodyLabel = createLabel(
+            attributedText: bodyText,
+            fontName: bodyFontName,
+            fontSize: bodyFontSize,
+            fontColor: bodyFontColor,
+            boldByDefault: false
+        )
+
+        guard let bodyLabel = bodyLabel else {
+            return
+        }
+
+        bodyLabel.numberOfLines = 0
+
+        addSubview(bodyLabel)
+    }
+
     fileprivate func createLabel(
             attributedText: NSMutableAttributedString?,
             fontName: String?,
@@ -228,27 +310,21 @@ open class OMAKOPopUpView: UIView {
             font = UIFont.systemFont(ofSize: fontSize)
         }
 
-        var fullRange: NSRange = NSMakeRange(0, attributedText.length)
+        let fullRange: NSRange = NSMakeRange(0, attributedText.length)
 
-        attributedText.addAttribute(NSFontAttributeName, value: font, range: fullRange)
+        attributedText.addAttribute(NSFontAttributeName, value: font!, range: fullRange)
         attributedText.addAttribute(NSParagraphStyleAttributeName, value: defaultParagraphStyle(), range: fullRange)
-        attributedText.addAttribute(NSForegroundColorAttributeName, value: titleFontColor, range: fullRange)
+        attributedText.addAttribute(NSForegroundColorAttributeName, value: fontColor, range: fullRange)
 
-        var label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.attributedText = attributedText
 
         return label
     }
 
-    fileprivate func setupBodyLabel() {
-        guard let bodyText = bodyText else {
-            return
-        }
-    }
-
     fileprivate func defaultParagraphStyle() -> NSMutableParagraphStyle {
-        var paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
 
         return paragraphStyle
