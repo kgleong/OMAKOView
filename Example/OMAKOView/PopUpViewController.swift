@@ -6,16 +6,12 @@ class PopUpViewController: UIViewController {
 
     var popUpView: OMAKOPopUpView?
 
-    var defaultTitleString: NSMutableAttributedString = NSMutableAttributedString(string: "Enter a Title Here")
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    var defaultTitleString: NSMutableAttributedString = NSMutableAttributedString(string: "Title Displayed Here")
 
     // MARK: - Pop Up View
 
     fileprivate func displayTitleOnlyPopUp() {
-        popUpView = OMAKOPopUpView()
+        createPopUpView()
 
         guard let popUpView = popUpView else {
             return
@@ -26,7 +22,7 @@ class PopUpViewController: UIViewController {
     }
 
     fileprivate func displayBody() {
-        popUpView = OMAKOPopUpView()
+        createPopUpView()
 
         guard let popUpView = popUpView else {
             return
@@ -40,7 +36,7 @@ class PopUpViewController: UIViewController {
     }
 
     fileprivate func displayTitleBodyPopUpWithFade() {
-        popUpView = OMAKOPopUpView()
+        createPopUpView()
 
         guard let popUpView = popUpView else {
             return
@@ -54,6 +50,11 @@ class PopUpViewController: UIViewController {
         )
 
         popUpView.display(parentView: view, withDuration: duration, completion: nil)
+    }
+
+    fileprivate func createPopUpView() {
+        popUpView?.hide(completion: nil)
+        popUpView = OMAKOPopUpView()
     }
 
     // MARK: - Interface Builder Actions
@@ -76,6 +77,6 @@ class PopUpViewController: UIViewController {
             return
         }
 
-        popUpView.hide(onCompletion: nil)
+        popUpView.hide(completion: nil)
     }
 }

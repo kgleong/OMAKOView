@@ -36,16 +36,16 @@ open class OMAKOPopUpView: UIView {
 
     // MARK: - Public API
 
+    open func display(parentView: UIView, completion: (() -> Void)?) {
+        display(parentView: parentView, withDuration: nil, completion: completion)
+    }
+
     open func display(parentView: UIView, withDuration duration: TimeInterval?, completion: (() -> Void)?) {
         parentView.addSubview(self)
         parentView.bringSubview(toFront: self)
 
         guard let duration = duration else {
-            guard let completion = completion else {
-                return
-            }
-
-            completion()
+            completion?()
             return
         }
 
@@ -64,13 +64,14 @@ open class OMAKOPopUpView: UIView {
         })
     }
 
-    open func hide(onCompletion: (() -> Void)?) {
+    open func hide(completion: (() -> Void)?) {
         guard superview != nil else {
             print("Pop up must be part of a view hierarchy.  No superview detected.")
             return
         }
 
         removeFromSuperview()
+        completion?()
     }
 
     // MARK: - UIView Methods
@@ -244,7 +245,7 @@ open class OMAKOPopUpView: UIView {
         }
 
         /// Vertical positioning if title label exists
-        
+
         if let titleLabel = titleLabel {
             constraintList.append(
                 NSLayoutConstraint(
