@@ -63,6 +63,7 @@ class PopUpViewController: UIViewController {
             return
         }
 
+        popUpView.bodyText = NSMutableAttributedString(string: "Loading")
         popUpView.displaySpinner(parentView: view)
     }
 

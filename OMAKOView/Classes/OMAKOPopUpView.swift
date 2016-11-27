@@ -27,6 +27,7 @@ open class OMAKOPopUpView: UIView {
     open var padding: CGFloat = 10.0
     open var cornerRadius: CGFloat? = 10.0
     open var spinnerSizeInPoints: CGFloat = 20.0
+    open var spinnerDuration: TimeInterval = 2.0
 
     // MARK: - Private variables
 
@@ -36,9 +37,27 @@ open class OMAKOPopUpView: UIView {
 
     fileprivate var defaultBackgroundColor: UIColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.5)
 
-    fileprivate var showSpinner: Bool = false
     fileprivate var spinnerType: OMAKOSpinnerType?
+
     fileprivate var constraintList = [NSLayoutConstraint]()
+
+    // MARK: - UIView Methods
+
+    override open func didMoveToSuperview() {
+        super.didMoveToSuperview()
+
+        /*
+         `didMoveToSuperview` and `willMoveToSuperview` are called
+         by `removeFromSuperview`, which calls `willMove(toSuperview: nil)`.
+
+         `nil` check prevents re-creating constraints and views when
+         the pop up is removed from its parent view.
+         */
+        if superview != nil {
+            setupView()
+            setupConstraints()
+        }
+    }
 
     // MARK: - Public API
 
@@ -71,10 +90,10 @@ open class OMAKOPopUpView: UIView {
     }
 
     open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType = .colorChangingSquare) {
-        showSpinner = true
         self.spinnerType = spinnerType
 
         parentView.addSubview(self)
+        animateSpinner()
     }
 
     open func hide(completion: (() -> Void)?) {
@@ -87,22 +106,55 @@ open class OMAKOPopUpView: UIView {
         completion?()
     }
 
-    // MARK: - UIView Methods
+    // MARK: - Spinner Animations
 
-    override open func didMoveToSuperview() {
-        super.didMoveToSuperview()
-
-        /*
-            `didMoveToSuperview` and `willMoveToSuperview` are called
-            by `removeFromSuperview`, which calls `willMove(toSuperview: nil)`.
-         
-            `nil` check prevents re-creating constraints and views when
-            the pop up is removed from its parent view.
-        */
-        if superview != nil {
-            setupView()
-            setupConstraints()
+    fileprivate func animateSpinner() {
+        guard let spinnerType = spinnerType else {
+            return
         }
+
+        switch spinnerType {
+        case .colorChangingSquare:
+            animateColorChangingSquare()
+        }
+    }
+
+    fileprivate func animateColorChangingSquare() {
+        guard let spinnerView = spinnerView, let startingColor = spinnerView.backgroundColor else {
+            return
+        }
+
+        /// Continuous cycling through colors
+        UIView.animateKeyframes(
+            withDuration: spinnerDuration,
+            delay: 0,
+            options: [UIViewKeyframeAnimationOptions.repeat],
+            animations: {
+                guard let spinnerView = self.spinnerView else {
+                    return
+                }
+
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0/3.0) {
+                    spinnerView.backgroundColor = UIColor.green
+                }
+                UIView.addKeyframe(withRelativeStartTime: 1.0/3.0, relativeDuration: 1.0/3.0) {
+                    spinnerView.backgroundColor = UIColor.blue
+                }
+                UIView.addKeyframe(withRelativeStartTime: 2.0/3.0, relativeDuration: 1.0/3.0) {
+                    spinnerView.backgroundColor = startingColor
+                }
+        },
+            completion: nil
+        )
+
+        /// Continuous rotation
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = 0
+        animation.toValue = CGFloat(M_PI * 2)
+        animation.duration = spinnerDuration
+        animation.repeatCount = Float.infinity
+
+        spinnerView.layer.add(animation, forKey: nil)
     }
 
     // MARK: - Constraint Setup
@@ -187,12 +239,17 @@ open class OMAKOPopUpView: UIView {
                 toItem: superview,
                 attribute: .width,
                 multiplier: 0.5,
-                constant: 0            )
+                constant: 0
+            )
         )
 
-        /// Top and bottom padding
+        setupPaddingConstraints()
+    }
 
-        if let firstViewInPopUp = firstViewInPopUp() {
+    fileprivate func setupPaddingConstraints() {
+        let orderedSubviews = orderSubviews()
+
+        if let firstViewInPopUp = orderedSubviews.first {
             constraintList.append(
                 NSLayoutConstraint(
                     item: firstViewInPopUp,
@@ -205,7 +262,7 @@ open class OMAKOPopUpView: UIView {
             )
         }
 
-        if let lastViewInPopUp = lastViewInPopUp() {
+        if let lastViewInPopUp = orderedSubviews.last {
             constraintList.append(
                 NSLayoutConstraint(
                     item: self,
@@ -218,37 +275,51 @@ open class OMAKOPopUpView: UIView {
                 )
             )
         }
+
+        for (index, subview) in orderedSubviews.enumerated() {
+            if(index > 0) {
+                let previousSubview = orderedSubviews[index - 1]
+                var topPadding = padding
+
+                /// Put less padding between spinner and
+                /// the view below it.
+                if let spinnerView = spinnerView {
+                    if previousSubview == spinnerView {
+                        topPadding = topPadding * 0.75
+                    }
+                }
+
+                constraintList.append(
+                    NSLayoutConstraint(
+                        item: subview,
+                        attribute: .top,
+                        relatedBy: .equal,
+                        toItem: previousSubview,
+                        attribute: .bottom,
+                        multiplier: 1,
+                        constant: topPadding
+                    )
+                )
+            }
+        }
     }
 
-    fileprivate func firstViewInPopUp() -> UIView? {
-        if spinnerView != nil {
-            return spinnerView
-        }
-        else if titleLabel != nil {
-            return titleLabel
-        }
-        else if bodyLabel != nil {
-            return bodyLabel
-        }
-        else {
-            return nil
-        }
-    }
+    fileprivate func orderSubviews() -> [UIView] {
+        var orderedSubviews = [UIView]()
 
+        if let spinnerView = spinnerView {
+            orderedSubviews.append(spinnerView)
+        }
 
-    fileprivate func lastViewInPopUp() -> UIView? {
-        if bodyLabel != nil {
-            return bodyLabel
+        if let titleLabel = titleLabel {
+            orderedSubviews.append(titleLabel)
         }
-        else if titleLabel != nil {
-            return titleLabel
+
+        if let bodyLabel = bodyLabel {
+            orderedSubviews.append(bodyLabel)
         }
-        else if spinnerView != nil {
-            return spinnerView
-        }
-        else {
-            return nil
-        }
+
+        return orderedSubviews
     }
 
     fileprivate func setupSpinnerViewConstraints() {
@@ -322,22 +393,6 @@ open class OMAKOPopUpView: UIView {
             return
         }
 
-        /// Vertical positioning if title label exists
-
-        if let titleLabel = titleLabel {
-            constraintList.append(
-                NSLayoutConstraint(
-                    item: bodyLabel,
-                    attribute: .top,
-                    relatedBy: .equal,
-                    toItem: titleLabel,
-                    attribute: .bottom,
-                    multiplier: 1,
-                    constant: padding
-                )
-            )
-        }
-
         /// Horizontal centering
 
         constraintList.append(
@@ -376,13 +431,13 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func setupSpinnerView() {
-        guard showSpinner else {
+        guard let spinnerType = spinnerType else {
             return
         }
 
         spinnerView = UIView()
 
-        guard let spinnerType = spinnerType, let spinnerView = spinnerView else {
+        guard let spinnerView = spinnerView else {
             return
         }
 
@@ -403,7 +458,7 @@ open class OMAKOPopUpView: UIView {
 
         spinnerView.backgroundColor = UIColor.red
         spinnerView.layer.cornerRadius = spinnerSizeInPoints / 4
-        spinnerView.layer.borderWidth = 1
+        spinnerView.layer.borderWidth = 2
         spinnerView.layer.borderColor = UIColor.white.cgColor
     }
 
