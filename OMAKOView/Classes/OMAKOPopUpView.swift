@@ -1,5 +1,9 @@
 import UIKit
 
+public enum OMAKOSpinnerType {
+    case colorChangingSquare
+}
+
 open class OMAKOPopUpView: UIView {
 
     // MARK: - Public variables
@@ -22,16 +26,18 @@ open class OMAKOPopUpView: UIView {
 
     open var padding: CGFloat = 10.0
     open var cornerRadius: CGFloat? = 10.0
+    open var spinnerSizeInPoints: CGFloat = 20.0
 
     // MARK: - Private variables
 
+    fileprivate var spinnerView: UIView?
     fileprivate var titleLabel: UILabel?
     fileprivate var bodyLabel: UILabel?
-    fileprivate var spinner: UIView?
 
     fileprivate var defaultBackgroundColor: UIColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.5)
 
     fileprivate var showSpinner: Bool = false
+    fileprivate var spinnerType: OMAKOSpinnerType?
     fileprivate var constraintList = [NSLayoutConstraint]()
 
     // MARK: - Public API
@@ -62,6 +68,13 @@ open class OMAKOPopUpView: UIView {
 
             completion()
         })
+    }
+
+    open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType = .colorChangingSquare) {
+        showSpinner = true
+        self.spinnerType = spinnerType
+
+        parentView.addSubview(self)
     }
 
     open func hide(completion: (() -> Void)?) {
@@ -96,6 +109,7 @@ open class OMAKOPopUpView: UIView {
 
     fileprivate func setupConstraints() {
         setupSelfConstraints()
+        setupSpinnerViewConstraints()
         setupTitleLabelConstraints()
         setupBodyLabelConstraints()
 
@@ -157,6 +171,18 @@ open class OMAKOPopUpView: UIView {
             NSLayoutConstraint(
                 item: self,
                 attribute: .width,
+                relatedBy: .greaterThanOrEqual,
+                toItem: spinnerView,
+                attribute: .width,
+                multiplier: 1,
+                constant: padding * 2
+            )
+        )
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: self,
+                attribute: .width,
                 relatedBy: .lessThanOrEqual,
                 toItem: superview,
                 attribute: .width,
@@ -195,7 +221,10 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func firstViewInPopUp() -> UIView? {
-        if titleLabel != nil {
+        if spinnerView != nil {
+            return spinnerView
+        }
+        else if titleLabel != nil {
             return titleLabel
         }
         else if bodyLabel != nil {
@@ -214,9 +243,58 @@ open class OMAKOPopUpView: UIView {
         else if titleLabel != nil {
             return titleLabel
         }
+        else if spinnerView != nil {
+            return spinnerView
+        }
         else {
             return nil
         }
+    }
+
+    fileprivate func setupSpinnerViewConstraints() {
+        guard let spinnerView = spinnerView else {
+            return
+        }
+
+        /// Horizontal Centering
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: spinnerView,
+                attribute: .centerX,
+                relatedBy: .equal,
+                toItem: self,
+                attribute: .centerX,
+                multiplier: 1,
+                constant: 0
+            )
+        )
+
+        /// Width and Height
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: spinnerView,
+                attribute: .width,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: spinnerSizeInPoints
+            )
+        )
+
+        constraintList.append(
+            NSLayoutConstraint(
+                item: spinnerView,
+                attribute: .height,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: spinnerSizeInPoints
+            )
+        )
     }
 
     fileprivate func setupTitleLabelConstraints() {
@@ -279,6 +357,7 @@ open class OMAKOPopUpView: UIView {
 
     fileprivate func setupView() {
         setupSelfView()
+        setupSpinnerView()
         setupTitleLabel()
         setupBodyLabel()
     }
@@ -294,6 +373,38 @@ open class OMAKOPopUpView: UIView {
             clipsToBounds = true
             layer.cornerRadius = cornerRadius
         }
+    }
+
+    fileprivate func setupSpinnerView() {
+        guard showSpinner else {
+            return
+        }
+
+        spinnerView = UIView()
+
+        guard let spinnerType = spinnerType, let spinnerView = spinnerView else {
+            return
+        }
+
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+
+        switch spinnerType {
+        case .colorChangingSquare:
+            setupColorChangingSquareSpinner()
+        }
+
+        addSubview(spinnerView)
+    }
+
+    fileprivate func setupColorChangingSquareSpinner() {
+        guard let spinnerView = spinnerView else {
+            return
+        }
+
+        spinnerView.backgroundColor = UIColor.red
+        spinnerView.layer.cornerRadius = spinnerSizeInPoints / 4
+        spinnerView.layer.borderWidth = 1
+        spinnerView.layer.borderColor = UIColor.white.cgColor
     }
 
     fileprivate func setupTitleLabel() {

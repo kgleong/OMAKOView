@@ -8,6 +8,10 @@ class PopUpViewController: UIViewController {
 
     var defaultTitleString: NSMutableAttributedString = NSMutableAttributedString(string: "Title Displayed Here")
 
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
     // MARK: - Pop Up View
 
     fileprivate func displayTitleOnlyPopUp() {
@@ -52,6 +56,16 @@ class PopUpViewController: UIViewController {
         popUpView.display(parentView: view, withDuration: duration, completion: nil)
     }
 
+    fileprivate func displaySpinner() {
+        createPopUpView()
+
+        guard let popUpView = popUpView else {
+            return
+        }
+
+        popUpView.displaySpinner(parentView: view)
+    }
+
     fileprivate func createPopUpView() {
         popUpView?.hide(completion: nil)
         popUpView = OMAKOPopUpView()
@@ -67,6 +81,8 @@ class PopUpViewController: UIViewController {
             displayBody()
         case 2:
             displayTitleBodyPopUpWithFade()
+        case 3:
+            displaySpinner()
         default:
             print(String(popUpTypeSegmentedControl.selectedSegmentIndex))
         }
