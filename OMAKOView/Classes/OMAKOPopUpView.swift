@@ -61,8 +61,8 @@ open class OMAKOPopUpView: UIView {
 
     // MARK: - Public API
 
-    open func display(parentView: UIView, completion: (() -> Void)?) {
-        display(parentView: parentView, withDuration: nil, completion: completion)
+    open func display(parentView: UIView) {
+        display(parentView: parentView, withDuration: nil, completion: nil)
     }
 
     open func display(parentView: UIView, withDuration duration: TimeInterval?, completion: (() -> Void)?) {
@@ -162,8 +162,6 @@ open class OMAKOPopUpView: UIView {
     fileprivate func setupConstraints() {
         setupSelfConstraints()
         setupSpinnerViewConstraints()
-        setupTitleLabelConstraints()
-        setupBodyLabelConstraints()
 
         NSLayoutConstraint.activate(constraintList)
     }
@@ -242,6 +240,9 @@ open class OMAKOPopUpView: UIView {
                 constant: 0
             )
         )
+
+        centerHorizontallyInParent(subview: titleLabel)
+        centerHorizontallyInParent(subview: bodyLabel)
 
         setupPaddingConstraints()
     }
@@ -327,19 +328,7 @@ open class OMAKOPopUpView: UIView {
             return
         }
 
-        /// Horizontal Centering
-
-        constraintList.append(
-            NSLayoutConstraint(
-                item: spinnerView,
-                attribute: .centerX,
-                relatedBy: .equal,
-                toItem: self,
-                attribute: .centerX,
-                multiplier: 1,
-                constant: 0
-            )
-        )
+        centerHorizontallyInParent(subview: spinnerView)
 
         /// Width and Height
 
@@ -368,36 +357,14 @@ open class OMAKOPopUpView: UIView {
         )
     }
 
-    fileprivate func setupTitleLabelConstraints() {
-        guard let titleLabel = titleLabel else {
+    fileprivate func centerHorizontallyInParent(subview: UIView?) {
+        guard let subview = subview else {
             return
         }
 
-        /// Horizontal centering
-
         constraintList.append(
             NSLayoutConstraint(
-                item: titleLabel,
-                attribute: .centerX,
-                relatedBy: .equal,
-                toItem: self,
-                attribute: .centerX,
-                multiplier: 1,
-                constant: 0
-            )
-        )
-    }
-
-    fileprivate func setupBodyLabelConstraints() {
-        guard let bodyLabel = bodyLabel else {
-            return
-        }
-
-        /// Horizontal centering
-
-        constraintList.append(
-            NSLayoutConstraint(
-                item: bodyLabel,
+                item: subview,
                 attribute: .centerX,
                 relatedBy: .equal,
                 toItem: self,
