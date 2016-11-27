@@ -146,7 +146,8 @@
                                 <segments>
                                     <segment title="Title"/>
                                     <segment title="Body"/>
-                                    <segment title="Loading 1"/>
+                                    <segment title="Both"/>
+                                    <segment title="Loading"/>
                                     <segment title="Loading 2"/>
                                 </segments>
                             </segmentedControl>

@@ -25,6 +25,20 @@ class PopUpViewController: UIViewController {
         popUpView.display(parentView: view, withDuration: nil, completion: nil)
     }
 
+    fileprivate func displayBody() {
+        popUpView = OMAKOPopUpView()
+
+        guard let popUpView = popUpView else {
+            return
+        }
+
+        popUpView.bodyText = NSMutableAttributedString(
+            string: "Text for the pop up body displayed here."
+        )
+
+        popUpView.display(parentView: view, withDuration: nil) { print("Popup with body displayed") }
+    }
+
     fileprivate func displayTitleBodyPopUpWithFade() {
         popUpView = OMAKOPopUpView()
 
@@ -49,6 +63,8 @@ class PopUpViewController: UIViewController {
         case 0:
             displayTitleOnlyPopUp()
         case 1:
+            displayBody()
+        case 2:
             displayTitleBodyPopUpWithFade()
         default:
             print(String(popUpTypeSegmentedControl.selectedSegmentIndex))

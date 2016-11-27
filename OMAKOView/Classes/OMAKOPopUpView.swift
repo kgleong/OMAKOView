@@ -15,8 +15,8 @@ open class OMAKOPopUpView: UIView {
     open var titleFontSize: CGFloat = 17.0
     open var bodyFontSize: CGFloat = 15.0
 
-    open var titleFontColor: UIColor = UIColor.red
-    open var bodyFontColor: UIColor = UIColor.green
+    open var titleFontColor: UIColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
+    open var bodyFontColor: UIColor = UIColor(red: 0.3, green: 0.1, blue: 0.3, alpha: 1.0)
 
     /// Layout
 
@@ -41,6 +41,11 @@ open class OMAKOPopUpView: UIView {
         parentView.bringSubview(toFront: self)
 
         guard let duration = duration else {
+            guard let completion = completion else {
+                return
+            }
+
+            completion()
             return
         }
 
@@ -121,7 +126,7 @@ open class OMAKOPopUpView: UIView {
                 constant: 0)
         )
 
-        /// Width relative to contents
+        /// Width
 
         constraintList.append(
             NSLayoutConstraint(
@@ -147,40 +152,76 @@ open class OMAKOPopUpView: UIView {
             )
         )
 
-        /// Positioning if no body text is displayed
-
-        let lastView: UIView? = bodyLabel == nil ? titleLabel : bodyLabel
-
         constraintList.append(
             NSLayoutConstraint(
                 item: self,
-                attribute: .bottom,
-                relatedBy: .equal,
-                toItem: lastView,
-                attribute: .bottom,
-                multiplier: 1,
-                constant: padding
-            )
+                attribute: .width,
+                relatedBy: .lessThanOrEqual,
+                toItem: superview,
+                attribute: .width,
+                multiplier: 0.5,
+                constant: 0            )
         )
+
+        /// Top and bottom padding
+
+        if let firstViewInPopUp = firstViewInPopUp() {
+            constraintList.append(
+                NSLayoutConstraint(
+                    item: firstViewInPopUp,
+                    attribute: .top,
+                    relatedBy: .equal,
+                    toItem: self,
+                    attribute: .top,
+                    multiplier: 1,
+                    constant: padding)
+            )
+        }
+
+        if let lastViewInPopUp = lastViewInPopUp() {
+            constraintList.append(
+                NSLayoutConstraint(
+                    item: self,
+                    attribute: .bottom,
+                    relatedBy: .equal,
+                    toItem: lastViewInPopUp,
+                    attribute: .bottom,
+                    multiplier: 1,
+                    constant: padding
+                )
+            )
+        }
+    }
+
+    fileprivate func firstViewInPopUp() -> UIView? {
+        if titleLabel != nil {
+            return titleLabel
+        }
+        else if bodyLabel != nil {
+            return bodyLabel
+        }
+        else {
+            return nil
+        }
+    }
+
+
+    fileprivate func lastViewInPopUp() -> UIView? {
+        if bodyLabel != nil {
+            return bodyLabel
+        }
+        else if titleLabel != nil {
+            return titleLabel
+        }
+        else {
+            return nil
+        }
     }
 
     fileprivate func setupTitleLabelConstraints() {
         guard let titleLabel = titleLabel else {
             return
         }
-
-        /// Padding
-
-        constraintList.append(
-            NSLayoutConstraint(
-                item: titleLabel,
-                attribute: .top,
-                relatedBy: .equal,
-                toItem: self,
-                attribute: .top,
-                multiplier: 1,
-                constant: padding)
-        )
 
         /// Horizontal centering
 
@@ -202,18 +243,21 @@ open class OMAKOPopUpView: UIView {
             return
         }
 
-        /// Padding
-
-        constraintList.append(
-            NSLayoutConstraint(
-                item: bodyLabel,
-                attribute: .top,
-                relatedBy: .equal,
-                toItem: titleLabel,
-                attribute: .bottom,
-                multiplier: 1,
-                constant: padding)
-        )
+        /// Vertical positioning if title label exists
+        
+        if let titleLabel = titleLabel {
+            constraintList.append(
+                NSLayoutConstraint(
+                    item: bodyLabel,
+                    attribute: .top,
+                    relatedBy: .equal,
+                    toItem: titleLabel,
+                    attribute: .bottom,
+                    multiplier: 1,
+                    constant: padding
+                )
+            )
+        }
 
         /// Horizontal centering
 
@@ -249,7 +293,6 @@ open class OMAKOPopUpView: UIView {
             clipsToBounds = true
             layer.cornerRadius = cornerRadius
         }
-
     }
 
     fileprivate func setupTitleLabel() {
@@ -264,6 +307,9 @@ open class OMAKOPopUpView: UIView {
         guard let titleLabel = titleLabel else {
             return
         }
+
+        titleLabel.numberOfLines = 0
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(titleLabel)
     }
@@ -282,6 +328,7 @@ open class OMAKOPopUpView: UIView {
         }
 
         bodyLabel.numberOfLines = 0
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
 
         addSubview(bodyLabel)
     }
