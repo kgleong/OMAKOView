@@ -4,6 +4,10 @@ public enum OMAKOSpinnerType {
     case colorChangingSquare
 }
 
+public enum OMAKOPopUpViewError: Error {
+    case missingContent
+}
+
 open class OMAKOPopUpView: UIView {
 
     // MARK: - Public variables
@@ -55,7 +59,19 @@ open class OMAKOPopUpView: UIView {
          */
         if superview != nil {
             setupView()
-            setupConstraints()
+
+
+            // TODO: Ideally, a check should be performed earlier, (e.g., in the public API methods) rather than after the view has been added to the view hierarchy.
+            do {
+                try setupConstraints()
+            }
+            catch OMAKOPopUpViewError.missingContent {
+                removeFromSuperview()
+                print("No content provided.  Removing from superview.")
+            }
+            catch {
+                print("Error occurred: \(error)")
+            }
         }
     }
 
@@ -159,14 +175,14 @@ open class OMAKOPopUpView: UIView {
 
     // MARK: - Constraint Setup
 
-    fileprivate func setupConstraints() {
-        setupSelfConstraints()
+    fileprivate func setupConstraints() throws {
+        try setupSelfConstraints()
         setupSpinnerViewConstraints()
 
         NSLayoutConstraint.activate(constraintList)
     }
 
-    fileprivate func setupSelfConstraints() {
+    fileprivate func setupSelfConstraints() throws {
         /// Horizontal and vertical centering
 
         constraintList.append(
@@ -244,11 +260,11 @@ open class OMAKOPopUpView: UIView {
         centerHorizontallyInParent(subview: titleLabel)
         centerHorizontallyInParent(subview: bodyLabel)
 
-        setupPaddingConstraints()
+        try setupPaddingConstraints()
     }
 
-    fileprivate func setupPaddingConstraints() {
-        let orderedSubviews = orderSubviews()
+    fileprivate func setupPaddingConstraints() throws {
+        let orderedSubviews = try orderSubviews()
 
         if let firstViewInPopUp = orderedSubviews.first {
             constraintList.append(
@@ -305,7 +321,7 @@ open class OMAKOPopUpView: UIView {
         }
     }
 
-    fileprivate func orderSubviews() -> [UIView] {
+    fileprivate func orderSubviews() throws -> [UIView] {
         var orderedSubviews = [UIView]()
 
         if let spinnerView = spinnerView {
@@ -318,6 +334,10 @@ open class OMAKOPopUpView: UIView {
 
         if let bodyLabel = bodyLabel {
             orderedSubviews.append(bodyLabel)
+        }
+
+        guard !orderedSubviews.isEmpty else {
+            throw OMAKOPopUpViewError.missingContent
         }
 
         return orderedSubviews

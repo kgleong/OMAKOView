@@ -12,6 +12,10 @@ class PopUpViewController: UIViewController {
         super.viewDidLoad()
     }
 
+    override open func viewWillAppear(_ animated: Bool) {
+        popUpView?.hide(completion: nil)
+    }
+
     // MARK: - Pop Up View
 
     fileprivate func displayTitleOnlyPopUp() {
@@ -36,6 +40,7 @@ class PopUpViewController: UIViewController {
             string: "Text for the pop up body displayed here."
         )
 
+        // Passes in an on completion handler that logs a message.
         popUpView.display(parentView: view, withDuration: nil) { print("Popup with body displayed") }
     }
 
@@ -67,6 +72,18 @@ class PopUpViewController: UIViewController {
         popUpView.displaySpinner(parentView: view)
     }
 
+    fileprivate func displaySpinnerTwo() {
+        createPopUpView()
+
+        guard let popUpView = popUpView else {
+            return
+        }
+
+        // For now, should log an error message.
+        popUpView.display(parentView: view)
+    }
+
+
     fileprivate func createPopUpView() {
         popUpView?.hide(completion: nil)
         popUpView = OMAKOPopUpView()
@@ -84,6 +101,8 @@ class PopUpViewController: UIViewController {
             displayTitleBodyPopUpWithFade()
         case 3:
             displaySpinner()
+        case 4:
+            displaySpinnerTwo()
         default:
             print(String(popUpTypeSegmentedControl.selectedSegmentIndex))
         }
