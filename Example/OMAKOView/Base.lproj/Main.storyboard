@@ -146,10 +146,22 @@
                                 <segments>
                                     <segment title="Title"/>
                                     <segment title="Body"/>
-                                    <segment title="Both"/>
-                                    <segment title="Loading"/>
-                                    <segment title="Loading 2"/>
+                                    <segment title="Text + Body"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onSegmentedValueChange:" destination="Mgy-IE-eJM" eventType="valueChanged" id="FK3-Di-drb"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nit-g5-qd0">
+                                <rect key="frame" x="26" y="68" width="323" height="29"/>
+                                <segments>
+                                    <segment title="Square Spinner"/>
+                                    <segment title="Square + Title"/>
+                                    <segment title="Star Spinner"/>
+                                </segments>
+                                <connections>
+                                    <action selector="onSegmentedValueChange:" destination="Mgy-IE-eJM" eventType="valueChanged" id="oIF-EQ-H2b"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XB-Xk-vdV">
                                 <rect key="frame" x="144" y="578" width="87" height="30"/>
@@ -172,14 +184,18 @@
                             <constraint firstItem="0q6-VN-Qhg" firstAttribute="leading" secondItem="JYm-0f-dud" secondAttribute="leadingMargin" constant="10" id="BwD-Ve-XOB"/>
                             <constraint firstItem="0q6-VN-Qhg" firstAttribute="top" secondItem="LuK-6z-vR2" secondAttribute="bottom" constant="10" id="Euf-UX-NqQ"/>
                             <constraint firstItem="9XB-Xk-vdV" firstAttribute="top" secondItem="pRg-ns-QLe" secondAttribute="bottom" constant="10" id="GEM-Aw-yVH"/>
+                            <constraint firstItem="Nit-g5-qd0" firstAttribute="top" secondItem="0q6-VN-Qhg" secondAttribute="bottom" constant="10" id="Jhr-Sj-jgY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0q6-VN-Qhg" secondAttribute="trailing" constant="10" id="LLY-xf-MgT"/>
                             <constraint firstItem="pRg-ns-QLe" firstAttribute="centerX" secondItem="9XB-Xk-vdV" secondAttribute="centerX" id="PEA-bl-V0v"/>
+                            <constraint firstItem="Nit-g5-qd0" firstAttribute="leading" secondItem="0q6-VN-Qhg" secondAttribute="leading" id="bHm-Xb-zLb"/>
+                            <constraint firstItem="Nit-g5-qd0" firstAttribute="trailing" secondItem="0q6-VN-Qhg" secondAttribute="trailing" id="eja-I9-3TT"/>
                             <constraint firstItem="9XB-Xk-vdV" firstAttribute="centerX" secondItem="JYm-0f-dud" secondAttribute="centerX" id="n8c-9a-O3v"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pop Up" image="hexagon" id="czE-dN-4bp"/>
                     <connections>
-                        <outlet property="popUpTypeSegmentedControl" destination="0q6-VN-Qhg" id="0JQ-55-Plx"/>
+                        <outlet property="spinnerTypeSegmentedControl" destination="Nit-g5-qd0" id="PVj-kn-tQ7"/>
+                        <outlet property="textPopUpTypeSegmentedControl" destination="0q6-VN-Qhg" id="Jxl-ff-lHi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4n-zI-2pV" userLabel="First Responder" sceneMemberID="firstResponder"/>

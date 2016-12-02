@@ -2,7 +2,11 @@ import UIKit
 import OMAKOView
 
 class PopUpViewController: UIViewController {
-    @IBOutlet weak var popUpTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var textPopUpTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var spinnerTypeSegmentedControl: UISegmentedControl!
+
+    var activeSegmentedControl: UISegmentedControl?
+    var inactiveSegmentedControl: UISegmentedControl?
 
     var popUpView: OMAKOPopUpView?
 
@@ -10,9 +14,13 @@ class PopUpViewController: UIViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
+        
+        activeSegmentedControl = textPopUpTypeSegmentedControl
+        inactiveSegmentedControl = spinnerTypeSegmentedControl
+        spinnerTypeSegmentedControl.selectedSegmentIndex = UISegmentedControlNoSegment
     }
 
-    override open func viewWillAppear(_ animated: Bool) {
+        override open func viewWillAppear(_ animated: Bool) {
         popUpView?.hide(completion: nil)
     }
 
@@ -61,7 +69,7 @@ class PopUpViewController: UIViewController {
         popUpView.display(parentView: view, withDuration: duration, completion: nil)
     }
 
-    fileprivate func displaySpinner() {
+    fileprivate func displaySquareSpinner() {
         createPopUpView()
 
         guard let popUpView = popUpView else {
@@ -72,7 +80,19 @@ class PopUpViewController: UIViewController {
         popUpView.displaySpinner(parentView: view)
     }
 
-    fileprivate func displaySpinnerTwo() {
+    fileprivate func displaySquareSpinnerWithTitle() {
+        createPopUpView()
+
+        guard let popUpView = popUpView else {
+            return
+        }
+
+        popUpView.titleText = NSMutableAttributedString(string: "Loading")
+        popUpView.bodyText = NSMutableAttributedString(string: "Your request will be completed shortly.")
+        popUpView.displaySpinner(parentView: view)
+    }
+
+    fileprivate func displayStarSpinner() {
         createPopUpView()
 
         guard let popUpView = popUpView else {
@@ -83,28 +103,48 @@ class PopUpViewController: UIViewController {
         popUpView.display(parentView: view)
     }
 
-
     fileprivate func createPopUpView() {
         popUpView?.hide(completion: nil)
         popUpView = OMAKOPopUpView()
+        popUpView!.layer.borderColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1.0).cgColor
+        popUpView!.layer.borderWidth = 2
     }
 
     // MARK: - Interface Builder Actions
 
+    @IBAction func onSegmentedValueChange(_ sender: UISegmentedControl) {
+        setActive(segmentedControl: sender)
+    }
+
+
     @IBAction func onDisplayPopUp(_ sender: UIButton) {
-        switch popUpTypeSegmentedControl.selectedSegmentIndex {
-        case 0:
-            displayTitleOnlyPopUp()
-        case 1:
-            displayBody()
-        case 2:
-            displayTitleBodyPopUpWithFade()
-        case 3:
-            displaySpinner()
-        case 4:
-            displaySpinnerTwo()
-        default:
-            print(String(popUpTypeSegmentedControl.selectedSegmentIndex))
+        guard let activeSegmentedControl = activeSegmentedControl else  {
+            return
+        }
+
+        /// Text only pop ups
+        if activeSegmentedControl == textPopUpTypeSegmentedControl {
+            switch activeSegmentedControl.selectedSegmentIndex {
+                case 0:
+                    displayTitleOnlyPopUp()
+                case 1:
+                    displayBody()
+                case 2:
+                    displayTitleBodyPopUpWithFade()
+                default: break
+            }
+        }
+        /// Spinner pop ups.
+        else if activeSegmentedControl == spinnerTypeSegmentedControl {
+            switch activeSegmentedControl.selectedSegmentIndex {
+                case 0:
+                    displaySquareSpinner()
+                case 1:
+                    displaySquareSpinnerWithTitle()
+                case 2:
+                    displayStarSpinner()
+                default: break
+            }
         }
     }
 
@@ -114,5 +154,13 @@ class PopUpViewController: UIViewController {
         }
 
         popUpView.hide(completion: nil)
+    }
+
+    fileprivate func setActive(segmentedControl: UISegmentedControl) {
+        if activeSegmentedControl != segmentedControl {
+            inactiveSegmentedControl = activeSegmentedControl
+            inactiveSegmentedControl?.selectedSegmentIndex = UISegmentedControlNoSegment
+            activeSegmentedControl = segmentedControl
+        }
     }
 }

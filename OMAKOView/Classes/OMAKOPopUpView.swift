@@ -39,7 +39,7 @@ open class OMAKOPopUpView: UIView {
     fileprivate var titleLabel: UILabel?
     fileprivate var bodyLabel: UILabel?
 
-    fileprivate var defaultBackgroundColor: UIColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.5)
+    fileprivate var defaultBackgroundColor = UIColor(red: 0.25, green: 0.25, blue: 0.40, alpha: 0.5)
 
     fileprivate var spinnerType: OMAKOSpinnerType?
 
@@ -59,7 +59,6 @@ open class OMAKOPopUpView: UIView {
          */
         if superview != nil {
             setupView()
-
 
             // TODO: Ideally, a check should be performed earlier, (e.g., in the public API methods) rather than after the view has been added to the view hierarchy.
             do {
@@ -267,6 +266,14 @@ open class OMAKOPopUpView: UIView {
         let orderedSubviews = try orderSubviews()
 
         if let firstViewInPopUp = orderedSubviews.first {
+            var topPadding: CGFloat = padding
+
+            /// Spinners require more top padding due to
+            /// layer rotation..
+            if firstViewInPopUp == spinnerView {
+                topPadding = padding * 1.3
+            }
+
             constraintList.append(
                 NSLayoutConstraint(
                     item: firstViewInPopUp,
@@ -275,7 +282,8 @@ open class OMAKOPopUpView: UIView {
                     toItem: self,
                     attribute: .top,
                     multiplier: 1,
-                    constant: padding)
+                    constant: topPadding
+                )
             )
         }
 
@@ -293,18 +301,10 @@ open class OMAKOPopUpView: UIView {
             )
         }
 
+        /// Padding between subviews
         for (index, subview) in orderedSubviews.enumerated() {
             if(index > 0) {
                 let previousSubview = orderedSubviews[index - 1]
-                var topPadding = padding
-
-                /// Put less padding between spinner and
-                /// the view below it.
-                if let spinnerView = spinnerView {
-                    if previousSubview == spinnerView {
-                        topPadding = topPadding * 0.75
-                    }
-                }
 
                 constraintList.append(
                     NSLayoutConstraint(
@@ -314,7 +314,7 @@ open class OMAKOPopUpView: UIView {
                         toItem: previousSubview,
                         attribute: .bottom,
                         multiplier: 1,
-                        constant: topPadding
+                        constant: padding
                     )
                 )
             }
@@ -408,7 +408,7 @@ open class OMAKOPopUpView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
 
         if backgroundColor == nil {
-            self.backgroundColor = defaultBackgroundColor
+            backgroundColor = defaultBackgroundColor
         }
 
         if let cornerRadius = cornerRadius {
