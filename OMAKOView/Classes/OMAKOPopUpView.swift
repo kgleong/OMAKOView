@@ -269,7 +269,7 @@ open class OMAKOPopUpView: UIView {
             var topPadding: CGFloat = padding
 
             /// Spinners require more top padding due to
-            /// layer rotation..
+            /// layer rotation.
             if firstViewInPopUp == spinnerView {
                 topPadding = padding * 1.3
             }
