@@ -123,6 +123,7 @@
                     <connections>
                         <segue destination="Mgy-IE-eJM" kind="relationship" relationship="viewControllers" id="rfD-Rh-yu4"/>
                         <segue destination="mrT-mX-8A2" kind="relationship" relationship="viewControllers" id="Ts6-oK-ESq"/>
+                        <segue destination="csE-fk-zK6" kind="relationship" relationship="viewControllers" id="EZs-sp-iF2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RI-fQ-wXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -201,6 +202,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R4n-zI-2pV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="772" y="893"/>
+        </scene>
+        <!--Star View-->
+        <scene sceneID="0l8-Ht-nmj">
+            <objects>
+                <viewController id="csE-fk-zK6" customClass="StarViewController" customModule="OMAKOView_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mkj-T4-Fiv"/>
+                        <viewControllerLayoutGuide type="bottom" id="UFA-9t-bOc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b4l-qV-mvB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-1z-f9v" customClass="OMAKOStarView" customModule="OMAKOView">
+                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="ZmH-Iy-dSE"/>
+                                    <constraint firstAttribute="height" constant="200" id="g5a-77-DB6"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
+                                        <real key="value" value="23"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
+                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasStroke" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yt1-1z-f9v" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="AKv-c7-RRk"/>
+                            <constraint firstItem="yt1-1z-f9v" firstAttribute="centerY" secondItem="b4l-qV-mvB" secondAttribute="centerY" id="QaE-ZF-sLM"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Star View" selectedImage="hexagon" id="mJQ-rK-4Cb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LGK-Pj-aFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="1220"/>
         </scene>
     </scenes>
     <resources>

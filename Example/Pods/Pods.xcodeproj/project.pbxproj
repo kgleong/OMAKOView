@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09FEB6BCA77D0C26ED26BFEDB67B9773 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42A63B3BFA641139718C91F16BF685E8 /* OMAKOPartiallyVisibleSwipeableView.swift */; };
 		2288B1595BD8A865275C4594E94E4721 /* Pods-OMAKOView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E7FD3E05B8ED3EE1C8B0A2A88A3114 /* Pods-OMAKOView_Example-dummy.m */; };
-		32669FA37725F2D65CDF31AD47D1E65C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		41497C1178001547B5366CE028421095 /* OMAKOView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38957DFE3B796DE10A68598AE93B83B8 /* OMAKOView-dummy.m */; };
+		6060028867C38C02BA2E537C23CF0DC2 /* OMAKOPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2400651695E7B159710B8765461E67AB /* OMAKOPopUpView.swift */; };
+		72073E47C52998A11A6ACA3BAAA2E74D /* OMAKOStarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AC8E48720BAB3509E2A79A76E08206 /* OMAKOStarView.swift */; };
 		722D2773C9371237E005AD192D79CC32 /* Pods-OMAKOView_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 33F0BC2E02C95AE048299B611B7669D8 /* Pods-OMAKOView_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7677CA57E4A2B57EE8B3EA9275A7C637 /* OMAKOView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 38957DFE3B796DE10A68598AE93B83B8 /* OMAKOView-dummy.m */; };
+		AC33CE794D85EACB2E171AA8641E934C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		AF8FBAFBE99BED3FF0911E999485F17A /* Pods-OMAKOView_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 83C9025DD23AFD86FD02C23EE1903C4F /* Pods-OMAKOView_Tests-dummy.m */; };
-		C8C840E084124C3D16C96D1863A2B9E4 /* OMAKOPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8248AE200CF5F124DB42F672AE5760 /* OMAKOPopUpView.swift */; };
-		E905817A528BC5206516EA23BA4815CF /* OMAKOView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D573B3C86CA9348907CBCCB0ACFE9B2 /* OMAKOView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1C5F825E0E64AD952318C6BBAD7B009 /* OMAKOView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4D573B3C86CA9348907CBCCB0ACFE9B2 /* OMAKOView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DB6CBA076B5BC7ED9BD9CD55A43814D8 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEB5330D40D509E1228B919380AC35B /* OMAKOPartiallyVisibleSwipeableView.swift */; };
 		F9A88145419A6785F29DCD1758FB6DCC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		FA0F04D9F626D2AC615B74B759909761 /* Pods-OMAKOView_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 957CE1D577374FC618A4441DFAC7E963 /* Pods-OMAKOView_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE149D3C2C725B632C2B12E5D6673D6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
@@ -25,7 +26,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 95959C2C2CE9922D845B809F9ECF9854;
+			remoteGlobalIDString = 30E05187C1BC759874FDE3B45510C1C9;
 			remoteInfo = OMAKOView;
 		};
 /* End PBXContainerItemProxy section */
@@ -33,17 +34,18 @@
 /* Begin PBXFileReference section */
 		15DF3E047D36934409E1F94A8B87E7A4 /* Pods-OMAKOView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OMAKOView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		1D2687E4D7CEBA9FAA743330F8225163 /* Pods_OMAKOView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_OMAKOView_Example.framework; path = "Pods-OMAKOView_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2400651695E7B159710B8765461E67AB /* OMAKOPopUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPopUpView.swift; sourceTree = "<group>"; };
 		2878245D0B7C63B7B2F8BC40F1F85AF4 /* OMAKOView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = OMAKOView.framework; path = OMAKOView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F2827D59F87880BC494AAC5F199997 /* Pods-OMAKOView_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-OMAKOView_Tests.modulemap"; sourceTree = "<group>"; };
+		2CEB5330D40D509E1228B919380AC35B /* OMAKOPartiallyVisibleSwipeableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPartiallyVisibleSwipeableView.swift; sourceTree = "<group>"; };
 		33F0BC2E02C95AE048299B611B7669D8 /* Pods-OMAKOView_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-OMAKOView_Example-umbrella.h"; sourceTree = "<group>"; };
 		34FE2E8815DE2F36F74A431CBD3B91C7 /* Pods-OMAKOView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-OMAKOView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		38957DFE3B796DE10A68598AE93B83B8 /* OMAKOView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "OMAKOView-dummy.m"; sourceTree = "<group>"; };
-		42A63B3BFA641139718C91F16BF685E8 /* OMAKOPartiallyVisibleSwipeableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPartiallyVisibleSwipeableView.swift; sourceTree = "<group>"; };
 		43035C3683BB8DE0AEBC3BD07062DE39 /* Pods-OMAKOView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-OMAKOView_Example.modulemap"; sourceTree = "<group>"; };
 		4D573B3C86CA9348907CBCCB0ACFE9B2 /* OMAKOView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "OMAKOView-umbrella.h"; sourceTree = "<group>"; };
 		54345E2E6F1DB7E286A291B478F0B515 /* Pods-OMAKOView_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-OMAKOView_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		61AC8E48720BAB3509E2A79A76E08206 /* OMAKOStarView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOStarView.swift; sourceTree = "<group>"; };
 		65E7FD3E05B8ED3EE1C8B0A2A88A3114 /* Pods-OMAKOView_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OMAKOView_Example-dummy.m"; sourceTree = "<group>"; };
-		7A8248AE200CF5F124DB42F672AE5760 /* OMAKOPopUpView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OMAKOPopUpView.swift; sourceTree = "<group>"; };
 		7E5A017E2F498CE11FB9BDD6FD0C7F4C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83C9025DD23AFD86FD02C23EE1903C4F /* Pods-OMAKOView_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-OMAKOView_Tests-dummy.m"; sourceTree = "<group>"; };
 		86873FB3AC9E7D26891BE66702055F24 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,19 +77,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		485D6214E4AC6B407BD2398F8C426739 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC33CE794D85EACB2E171AA8641E934C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		86064B35B61D54D98F776A9758F0F193 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F9A88145419A6785F29DCD1758FB6DCC /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9D4C7FD8D2DC49B683064F5F2BB14EFB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				32669FA37725F2D65CDF31AD47D1E65C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,15 +123,6 @@
 			path = "Target Support Files/Pods-OMAKOView_Tests";
 			sourceTree = "<group>";
 		};
-		68B20981129421828B6D7EB8C42D3FBF /* OMAKOView */ = {
-			isa = PBXGroup;
-			children = (
-				B986E953301B47B5BF436A0B9026E8E1 /* Classes */,
-			);
-			name = OMAKOView;
-			path = OMAKOView;
-			sourceTree = "<group>";
-		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +145,7 @@
 		8D1256F6F77E36179C62116F774623ED /* OMAKOView */ = {
 			isa = PBXGroup;
 			children = (
-				68B20981129421828B6D7EB8C42D3FBF /* OMAKOView */,
+				F2020D4377F41D22E46EA5E6A9F7F2BE /* OMAKOView */,
 				AAA822B563DBA9F139E2C0D1352CA738 /* Support Files */,
 			);
 			name = OMAKOView;
@@ -209,16 +202,6 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		B986E953301B47B5BF436A0B9026E8E1 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				42A63B3BFA641139718C91F16BF685E8 /* OMAKOPartiallyVisibleSwipeableView.swift */,
-				7A8248AE200CF5F124DB42F672AE5760 /* OMAKOPopUpView.swift */,
-			);
-			name = Classes;
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -227,14 +210,34 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		ED28915E041976527F106F68155742F5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				2CEB5330D40D509E1228B919380AC35B /* OMAKOPartiallyVisibleSwipeableView.swift */,
+				2400651695E7B159710B8765461E67AB /* OMAKOPopUpView.swift */,
+				61AC8E48720BAB3509E2A79A76E08206 /* OMAKOStarView.swift */,
+			);
+			name = Classes;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F2020D4377F41D22E46EA5E6A9F7F2BE /* OMAKOView */ = {
+			isa = PBXGroup;
+			children = (
+				ED28915E041976527F106F68155742F5 /* Classes */,
+			);
+			name = OMAKOView;
+			path = OMAKOView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4561B03CF3FF85A42A0CB08CD790E733 /* Headers */ = {
+		02A77B73F04B56858DE5388B9C9EA7EB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E905817A528BC5206516EA23BA4815CF /* OMAKOView-umbrella.h in Headers */,
+				B1C5F825E0E64AD952318C6BBAD7B009 /* OMAKOView-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,13 +278,13 @@
 			productReference = 1D2687E4D7CEBA9FAA743330F8225163 /* Pods_OMAKOView_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		95959C2C2CE9922D845B809F9ECF9854 /* OMAKOView */ = {
+		30E05187C1BC759874FDE3B45510C1C9 /* OMAKOView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ABBD6A056823F45A0719F68967F81C90 /* Build configuration list for PBXNativeTarget "OMAKOView" */;
+			buildConfigurationList = 7DECD35DF483753F31440EC8F8FA01FC /* Build configuration list for PBXNativeTarget "OMAKOView" */;
 			buildPhases = (
-				C54DD1A9AF2E7674A3C635A814E53651 /* Sources */,
-				9D4C7FD8D2DC49B683064F5F2BB14EFB /* Frameworks */,
-				4561B03CF3FF85A42A0CB08CD790E733 /* Headers */,
+				E3DDAEA492752C670A5BD65C85E3263E /* Sources */,
+				485D6214E4AC6B407BD2398F8C426739 /* Frameworks */,
+				02A77B73F04B56858DE5388B9C9EA7EB /* Headers */,
 			);
 			buildRules = (
 			);
@@ -330,7 +333,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				95959C2C2CE9922D845B809F9ECF9854 /* OMAKOView */,
+				30E05187C1BC759874FDE3B45510C1C9 /* OMAKOView */,
 				21D5445EF7DD9EDD2AAD98D8C5C7C80E /* Pods-OMAKOView_Example */,
 				B64564DBF68984F19ED679CDF5B3FF8A /* Pods-OMAKOView_Tests */,
 			);
@@ -354,13 +357,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C54DD1A9AF2E7674A3C635A814E53651 /* Sources */ = {
+		E3DDAEA492752C670A5BD65C85E3263E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09FEB6BCA77D0C26ED26BFEDB67B9773 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */,
-				C8C840E084124C3D16C96D1863A2B9E4 /* OMAKOPopUpView.swift in Sources */,
-				7677CA57E4A2B57EE8B3EA9275A7C637 /* OMAKOView-dummy.m in Sources */,
+				DB6CBA076B5BC7ED9BD9CD55A43814D8 /* OMAKOPartiallyVisibleSwipeableView.swift in Sources */,
+				6060028867C38C02BA2E537C23CF0DC2 /* OMAKOPopUpView.swift in Sources */,
+				72073E47C52998A11A6ACA3BAAA2E74D /* OMAKOStarView.swift in Sources */,
+				41497C1178001547B5366CE028421095 /* OMAKOView-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +374,7 @@
 		185CF5F14737909CE9B62C05DA7AFB40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = OMAKOView;
-			target = 95959C2C2CE9922D845B809F9ECF9854 /* OMAKOView */;
+			target = 30E05187C1BC759874FDE3B45510C1C9 /* OMAKOView */;
 			targetProxy = 7893691EBD9342EE92415B5E5DAD5539 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -411,71 +415,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		27B90438AFC3C4C8CD7E43525FBBA650 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1BCDF0E3309F568E601E151B77CDA2A /* OMAKOView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OMAKOView/OMAKOView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OMAKOView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OMAKOView/OMAKOView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = OMAKOView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		33FEA4737A2A8C118472C8FA011FEF75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1BCDF0E3309F568E601E151B77CDA2A /* OMAKOView.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/OMAKOView/OMAKOView-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/OMAKOView/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/OMAKOView/OMAKOView.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = OMAKOView;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		430224ECFB6EEA176DE7AD1DD39D9D4C /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -582,6 +521,39 @@
 			};
 			name = Release;
 		};
+		A4528AA0C07A6C360AC615ECF3F214B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1BCDF0E3309F568E601E151B77CDA2A /* OMAKOView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OMAKOView/OMAKOView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OMAKOView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OMAKOView/OMAKOView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = OMAKOView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		CACE7C8415F53E79F07C6BBE57F0F61D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -666,6 +638,38 @@
 			};
 			name = Release;
 		};
+		F0D6C69B8349561026F0B91C1DA4AF70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1BCDF0E3309F568E601E151B77CDA2A /* OMAKOView.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/OMAKOView/OMAKOView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/OMAKOView/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/OMAKOView/OMAKOView.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = OMAKOView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -687,11 +691,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ABBD6A056823F45A0719F68967F81C90 /* Build configuration list for PBXNativeTarget "OMAKOView" */ = {
+		7DECD35DF483753F31440EC8F8FA01FC /* Build configuration list for PBXNativeTarget "OMAKOView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				27B90438AFC3C4C8CD7E43525FBBA650 /* Debug */,
-				33FEA4737A2A8C118472C8FA011FEF75 /* Release */,
+				A4528AA0C07A6C360AC615ECF3F214B7 /* Debug */,
+				F0D6C69B8349561026F0B91C1DA4AF70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

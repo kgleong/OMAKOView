@@ -15,6 +15,7 @@
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		71DCF0F114695EE6A4594E83 /* Pods_OMAKOView_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D06DFCC669B35685BB2FE5 /* Pods_OMAKOView_Tests.framework */; };
 		9F6C58C71DE998EB00044D49 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6C58C61DE998EB00044D49 /* PopUpViewController.swift */; };
+		9F7B222F1DF5FCB20071A833 /* StarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7B222E1DF5FCB20071A833 /* StarViewController.swift */; };
 		B4485701BE82F2E5E48E02A5 /* Pods_OMAKOView_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B8E60E55BB6D427FAB5D99 /* Pods_OMAKOView_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		7BF63FA4202628649AA18CCA /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		896CD04A19A30E7225EDFF05 /* Pods-OMAKOView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMAKOView_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMAKOView_Tests/Pods-OMAKOView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F6C58C61DE998EB00044D49 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		9F7B222E1DF5FCB20071A833 /* StarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarViewController.swift; sourceTree = "<group>"; };
 		A7E63AAB726D73BBA13C843C /* OMAKOView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = OMAKOView.podspec; path = ../OMAKOView.podspec; sourceTree = "<group>"; };
 		D367E6B4D988C5D72B5157E6 /* Pods-OMAKOView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OMAKOView_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OMAKOView_Example/Pods-OMAKOView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		D6B8E60E55BB6D427FAB5D99 /* Pods_OMAKOView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OMAKOView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				9F7B222E1DF5FCB20071A833 /* StarViewController.swift */,
 			);
 			name = "Example for OMAKOView";
 			path = OMAKOView;
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F7B222F1DF5FCB20071A833 /* StarViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* PartiallyVisiableSwipeableViewController.swift in Sources */,
 				9F6C58C71DE998EB00044D49 /* PopUpViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
