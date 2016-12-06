@@ -1,6 +1,6 @@
 {
   "name": "OMAKOView",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "summary": "Custom user interface elements for iOS applications.",
   "description": "This is a collection of UI elements for use in iOS applications.\n\nIncludes:\n* OMAKOPartiallyVisibleSwipeableView",
   "homepage": "https://github.com/kgleong/OMAKOView",
@@ -14,7 +14,7 @@
   },
   "source": {
     "git": "https://github.com/kgleong/OMAKOView.git",
-    "tag": "2.1.3"
+    "tag": "2.2.0"
   },
   "platforms": {
     "ios": "10.1"

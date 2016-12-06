@@ -121,9 +121,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Mgy-IE-eJM" kind="relationship" relationship="viewControllers" id="rfD-Rh-yu4"/>
-                        <segue destination="mrT-mX-8A2" kind="relationship" relationship="viewControllers" id="Ts6-oK-ESq"/>
-                        <segue destination="csE-fk-zK6" kind="relationship" relationship="viewControllers" id="EZs-sp-iF2"/>
+                        <segue destination="csE-fk-zK6" kind="relationship" relationship="viewControllers" id="pa1-sc-9kd"/>
+                        <segue destination="Mgy-IE-eJM" kind="relationship" relationship="viewControllers" id="TM1-cL-hKf"/>
+                        <segue destination="mrT-mX-8A2" kind="relationship" relationship="viewControllers" id="hV5-I5-LI5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4RI-fQ-wXx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,7 +193,7 @@
                             <constraint firstItem="9XB-Xk-vdV" firstAttribute="centerX" secondItem="JYm-0f-dud" secondAttribute="centerX" id="n8c-9a-O3v"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pop Up" image="hexagon" id="czE-dN-4bp"/>
+                    <tabBarItem key="tabBarItem" title="Pop Up" image="hexagon" selectedImage="hexagon" id="czE-dN-4bp"/>
                     <connections>
                         <outlet property="spinnerTypeSegmentedControl" destination="Nit-g5-qd0" id="PVj-kn-tQ7"/>
                         <outlet property="textPopUpTypeSegmentedControl" destination="0q6-VN-Qhg" id="Jxl-ff-lHi"/>
@@ -216,14 +216,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-1z-f9v" customClass="OMAKOStarView" customModule="OMAKOView">
-                                <rect key="frame" x="87.5" y="233.5" width="200" height="200"/>
+                                <rect key="frame" x="112.5" y="258.5" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="ZmH-Iy-dSE"/>
-                                    <constraint firstAttribute="height" constant="200" id="g5a-77-DB6"/>
+                                    <constraint firstAttribute="width" constant="150" id="ZmH-Iy-dSE"/>
+                                    <constraint firstAttribute="height" constant="150" id="g5a-77-DB6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
-                                        <real key="value" value="23"/>
+                                        <real key="value" value="20"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
                                         <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -232,26 +232,82 @@
                                         <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="hasStroke" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rotation">
+                                        <integer key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z72-Ah-lcl">
+                                <rect key="frame" x="146" y="88.5" width="82" height="30"/>
+                                <state key="normal" title="Stroke &amp; Fill"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="Pom-NW-Axs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duI-Ie-TeL" userLabel="Fill Only">
+                                <rect key="frame" x="160" y="143.5" width="55" height="30"/>
+                                <state key="normal" title="Fill Only"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="RZ4-eW-Eh7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-63-xJQ">
+                                <rect key="frame" x="135.5" y="198.5" width="103" height="30"/>
+                                <state key="normal" title="w/ Background"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="LVe-Hv-ZfE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tEi-e9-jX4">
+                                <rect key="frame" x="168.5" y="438.5" width="38" height="30"/>
+                                <state key="normal" title="Thick"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="78Z-iX-x7k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AAN-yw-KQT">
+                                <rect key="frame" x="172.5" y="493.5" width="30" height="30"/>
+                                <state key="normal" title="Thin"/>
+                                <connections>
+                                    <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="OMb-6g-riz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Dk9-63-xJQ" firstAttribute="bottom" secondItem="yt1-1z-f9v" secondAttribute="top" constant="-30" id="839-5K-Vdx"/>
+                            <constraint firstItem="AAN-yw-KQT" firstAttribute="top" secondItem="tEi-e9-jX4" secondAttribute="bottom" constant="25" id="8Y1-N1-FBE"/>
+                            <constraint firstItem="Z72-Ah-lcl" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="8lA-Wz-0YE"/>
                             <constraint firstItem="yt1-1z-f9v" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="AKv-c7-RRk"/>
+                            <constraint firstItem="duI-Ie-TeL" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="JnA-rO-1mE"/>
+                            <constraint firstItem="Dk9-63-xJQ" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="Kvt-ZJ-ZhE"/>
                             <constraint firstItem="yt1-1z-f9v" firstAttribute="centerY" secondItem="b4l-qV-mvB" secondAttribute="centerY" id="QaE-ZF-sLM"/>
+                            <constraint firstItem="AAN-yw-KQT" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="TM6-e0-VTV"/>
+                            <constraint firstItem="tEi-e9-jX4" firstAttribute="top" secondItem="yt1-1z-f9v" secondAttribute="bottom" constant="30" id="cV6-s0-Nuy"/>
+                            <constraint firstItem="duI-Ie-TeL" firstAttribute="bottom" secondItem="Dk9-63-xJQ" secondAttribute="top" constant="-25" id="ppK-t9-RXg"/>
+                            <constraint firstItem="tEi-e9-jX4" firstAttribute="centerX" secondItem="b4l-qV-mvB" secondAttribute="centerX" id="smS-kA-Ke5"/>
+                            <constraint firstItem="Z72-Ah-lcl" firstAttribute="bottom" secondItem="duI-Ie-TeL" secondAttribute="top" constant="-25" id="xJU-lL-454"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Star View" selectedImage="hexagon" id="mJQ-rK-4Cb"/>
+                    <tabBarItem key="tabBarItem" title="Star View" image="star" selectedImage="star" id="mJQ-rK-4Cb"/>
+                    <connections>
+                        <outlet property="fillOnlyButton" destination="duI-Ie-TeL" id="vwg-tN-H9e"/>
+                        <outlet property="strokeAndFillButton" destination="Z72-Ah-lcl" id="0g9-Sh-EBb"/>
+                        <outlet property="thickButton" destination="tEi-e9-jX4" id="TPE-hs-EW5"/>
+                        <outlet property="thinButton" destination="AAN-yw-KQT" id="Pew-KR-9Ou"/>
+                        <outlet property="withBackgroundButton" destination="Dk9-63-xJQ" id="OP3-Rn-WfZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LGK-Pj-aFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-44" y="1220"/>
+            <point key="canvasLocation" x="-44" y="1219.3403298350825"/>
         </scene>
     </scenes>
     <resources>
         <image name="background" width="360" height="640"/>
         <image name="circle" width="24" height="24"/>
         <image name="hexagon" width="24" height="24"/>
+        <image name="star" width="24" height="24"/>
         <image name="thumbs-down" width="24" height="24"/>
         <image name="thumbs-up" width="24" height="24"/>
     </resources>

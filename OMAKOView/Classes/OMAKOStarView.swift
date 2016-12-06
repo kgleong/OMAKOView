@@ -41,6 +41,12 @@ class OMAKOStarView: UIView {
                 "Stroke width must be less than the star's radius"
             )
         }
+
+        /// Set background color to clear so the transparent black 
+        /// background isn't displayed.
+        if backgroundColor == nil && isOpaque {
+            backgroundColor = UIColor.clear
+        }
     }
 
     override func draw(_ rect: CGRect) {
@@ -128,7 +134,8 @@ class OMAKOStarView: UIView {
     fileprivate func addVerticesToPoints(radius: CGFloat, index: Int, points: inout [CGPoint]) {
         let endAngleDelta = CGFloat(index) * angleBetweenVertices
 
-        /// Start at 12 o'clock.
+        /// Start at 12 o'clock.  The UIBezier path is going in a clockwise direction, so
+        /// 3π/2 is noon.
         let starTipStartAngle = CGFloat(3) * π/2
 
         let starTipPath = UIBezierPath(
