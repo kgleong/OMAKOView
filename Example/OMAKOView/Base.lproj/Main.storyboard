@@ -221,21 +221,6 @@
                                     <constraint firstAttribute="width" constant="150" id="ZmH-Iy-dSE"/>
                                     <constraint firstAttribute="height" constant="150" id="g5a-77-DB6"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="strokeWidth">
-                                        <real key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="strokeColor">
-                                        <color key="value" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="hasStroke" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rotation">
-                                        <integer key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z72-Ah-lcl">
                                 <rect key="frame" x="146" y="88.5" width="82" height="30"/>
@@ -253,7 +238,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dk9-63-xJQ">
                                 <rect key="frame" x="135.5" y="198.5" width="103" height="30"/>
-                                <state key="normal" title="w/ Background"/>
+                                <state key="normal" title="w/ Background">
+                                    <color key="titleColor" red="0.035294117647058823" green="0.37647058823529411" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onButtonTap:" destination="csE-fk-zK6" eventType="touchUpInside" id="LVe-Hv-ZfE"/>
                                 </connections>
@@ -292,6 +279,7 @@
                     <tabBarItem key="tabBarItem" title="Star View" image="star" selectedImage="star" id="mJQ-rK-4Cb"/>
                     <connections>
                         <outlet property="fillOnlyButton" destination="duI-Ie-TeL" id="vwg-tN-H9e"/>
+                        <outlet property="starView" destination="yt1-1z-f9v" id="L1d-Xx-KE6"/>
                         <outlet property="strokeAndFillButton" destination="Z72-Ah-lcl" id="0g9-Sh-EBb"/>
                         <outlet property="thickButton" destination="tEi-e9-jX4" id="TPE-hs-EW5"/>
                         <outlet property="thinButton" destination="AAN-yw-KQT" id="Pew-KR-9Ou"/>

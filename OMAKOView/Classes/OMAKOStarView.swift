@@ -1,14 +1,14 @@
 import UIKit
 
 @IBDesignable
-class OMAKOStarView: UIView {
-    @IBInspectable var strokeWidth: CGFloat = 5
-    @IBInspectable var hasStroke: Bool = false
-    @IBInspectable var strokeColor: UIColor = UIColor.red
+open class OMAKOStarView: UIView {
+    @IBInspectable open var strokeWidth: CGFloat = 5
+    @IBInspectable open var hasStroke: Bool = false
+    @IBInspectable open var strokeColor: UIColor = UIColor.red
 
-    @IBInspectable var fillColor: UIColor = UIColor(red: 0.6, green: 0.6, blue: 0.8, alpha: 1.0)
+    @IBInspectable open var fillColor: UIColor = UIColor(red: 0.05, green: 0.5, blue: 1.0, alpha: 1.0)
 
-    @IBInspectable var cacheVertices: Bool = true
+    @IBInspectable open var cacheVertices: Bool = true
 
     /**
      Ratio of inner to outer radius.
@@ -16,20 +16,23 @@ class OMAKOStarView: UIView {
      Higher values result in wider arms, while lower values
      result in narrower arms.
      */
-    @IBInspectable var innerToOuterRadiusRatio: CGFloat = 0.45
+    @IBInspectable open var innerToOuterRadiusRatio: CGFloat = 0.45
 
-    let π: CGFloat = CGFloat(M_PI)
-    let numVertices: Int = 5
+    /// Ratio of outer radius to minimum view dimension.  I.e., star size.
+    @IBInspectable open var starToViewRatio: CGFloat = 1.0
+
+    fileprivate let π: CGFloat = CGFloat(M_PI)
+    fileprivate let numVertices: Int = 5
 
     /// 72 degrees (angle between each star's vertex) in radians
-    let angleBetweenVertices: CGFloat = 2 * CGFloat(M_PI) / 5
+    fileprivate let angleBetweenVertices: CGFloat = 2 * CGFloat(M_PI) / 5
 
-    var outerPathPoints = [CGPoint]()
-    var innerPathPoints = [CGPoint]()
+    fileprivate var outerPathPoints = [CGPoint]()
+    fileprivate var innerPathPoints = [CGPoint]()
 
     // MARK: - UIView Overrides
 
-    override func awakeFromNib() {
+    override open func awakeFromNib() {
         assert(
             innerToOuterRadiusRatio < 1.0 && innerToOuterRadiusRatio > 0.0,
             "Ratio between inner and outer ratio must be between 0 and 1.0"
@@ -49,7 +52,7 @@ class OMAKOStarView: UIView {
         }
     }
 
-    override func draw(_ rect: CGRect) {
+    override open func draw(_ rect: CGRect) {
         /// Recalculate vertices if this is the initial render
         /// or caching is disabled.
         if outerPathPoints.isEmpty || !cacheVertices {
@@ -164,7 +167,7 @@ class OMAKOStarView: UIView {
 
     fileprivate func starCenter() -> CGPoint {
         let yDelta = starOuterRadius() - distanceFromStarCenterToBottom()
-        let yCenter = starOuterRadius() + yDelta/CGFloat(2)
+        let yCenter = bounds.height/CGFloat(2) + yDelta/CGFloat(2)
 
         return CGPoint(x: bounds.width/2, y: yCenter)
     }
@@ -174,6 +177,7 @@ class OMAKOStarView: UIView {
     }
 
     fileprivate func starOuterRadius() -> CGFloat {
-        return min(bounds.width, bounds.height)/2
+        assert(starToViewRatio > 0 && starToViewRatio <= 1.0, "Star to view ratio must be between 0 (exclusive) and 1.0 (inclusive)")
+        return (min(bounds.width, bounds.height)/2) * starToViewRatio
     }
 }
