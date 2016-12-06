@@ -221,6 +221,11 @@
                                     <constraint firstAttribute="width" constant="150" id="ZmH-Iy-dSE"/>
                                     <constraint firstAttribute="height" constant="150" id="g5a-77-DB6"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z72-Ah-lcl">
                                 <rect key="frame" x="146" y="88.5" width="82" height="30"/>

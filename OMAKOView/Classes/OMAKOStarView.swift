@@ -30,6 +30,8 @@ open class OMAKOStarView: UIView {
     fileprivate var outerPathPoints = [CGPoint]()
     fileprivate var innerPathPoints = [CGPoint]()
 
+    fileprivate var isDebug = false
+
     // MARK: - UIView Overrides
 
     override open func awakeFromNib() {
@@ -88,6 +90,15 @@ open class OMAKOStarView: UIView {
         }
         else {
             drawStar(pathPoints: outerPathPoints, fillColor: fillColor)
+        }
+
+        // TODO: - Remove before publishing
+        isDebug = true
+
+        if isDebug {
+            let center = CGPoint(x: bounds.width/2.0, y: bounds.width/2.0)
+            renderPoint(point: center, size: 2, color: UIColor.blue)
+            renderPoint(point: starCenter(), size: 2, color: UIColor.red)
         }
     }
 
@@ -179,5 +190,13 @@ open class OMAKOStarView: UIView {
     fileprivate func starOuterRadius() -> CGFloat {
         assert(starToViewRatio > 0 && starToViewRatio <= 1.0, "Star to view ratio must be between 0 (exclusive) and 1.0 (inclusive)")
         return (min(bounds.width, bounds.height)/2) * starToViewRatio
+    }
+
+    // MARK: - Diagnostics
+
+    fileprivate func renderPoint(point: CGPoint, size: CGFloat, color: UIColor = UIColor.black) {
+        let path = UIBezierPath(ovalIn: CGRect(origin: point, size: CGSize(width: size, height: size)))
+        color.setFill()
+        path.fill()
     }
 }
