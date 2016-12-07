@@ -8,6 +8,8 @@ open class OMAKOStarView: UIView {
 
     @IBInspectable open var fillColor: UIColor = UIColor(red: 0.05, green: 0.5, blue: 1.0, alpha: 1.0)
 
+    /// Caches calculation for placement of star vertices on the first
+    /// call to draw(_:) if true.
     @IBInspectable open var cacheVertices: Bool = true
 
     /**
@@ -27,7 +29,19 @@ open class OMAKOStarView: UIView {
     /// 72 degrees (angle between each star's vertex) in radians
     fileprivate let angleBetweenVertices: CGFloat = 2 * CGFloat(M_PI) / 5
 
+    /// Vertex set for the outer star
     fileprivate var outerPathPoints = [CGPoint]()
+
+    /**
+        Vertex set for the inner star.  Only populated if a stroke is specified.
+        
+        Varying the stroke width, unfortunately has undesireable side effects, 
+        where the stroke can extend beyond the bounds of the view frame.
+     
+        Therefore, to achieve the effect of an outline, a second star must
+        be drawn within, with the larger star acting as the stroke, and the 
+        inner star the fill.
+    */
     fileprivate var innerPathPoints = [CGPoint]()
 
     fileprivate var isDebug = false
@@ -62,6 +76,7 @@ open class OMAKOStarView: UIView {
             innerPathPoints.removeAll(keepingCapacity: true)
 
             for index in 0...4 {
+                /// Determine outer star vertices
                 addVerticesToPoints(
                     radius: starOuterRadius(),
                     index: index,
@@ -72,6 +87,8 @@ open class OMAKOStarView: UIView {
                     continue
                 }
 
+                /// Determine inner star vertices.  Only if 
+                /// a stroke is desired.
                 addVerticesToPoints(
                     radius: starOuterRadius() - strokeWidth,
                     index: index,
@@ -92,6 +109,7 @@ open class OMAKOStarView: UIView {
             drawStar(pathPoints: outerPathPoints, fillColor: fillColor)
         }
 
+        /// Check star center relative to view center.
         if isDebug {
             let center = CGPoint(x: bounds.width/2.0, y: bounds.width/2.0)
             renderPoint(point: center, size: 2, color: UIColor.blue)
@@ -131,7 +149,7 @@ open class OMAKOStarView: UIView {
         to a list of points.
 
         Each star consists of 10 vertices, where each tip vertex has an adjacent
-        valley vertex.
+        valley vertex, where the base of two arms meet.
 
         Terms:
             * **Star tip**: The tip of a star's arm

@@ -23,8 +23,6 @@ class StarViewController: UIViewController {
     fileprivate func onStrokeAndFillTap() {
         setCommonStarConfig()
         setDefaultFillAndStroke()
-
-        starView.setNeedsDisplay()
     }
 
     fileprivate func onFillOnlyTap() {
@@ -32,8 +30,6 @@ class StarViewController: UIViewController {
 
         starView.fillColor = UIColor(red: 0.05, green: 0.5, blue: 1.0, alpha: 1.0)
         starView.hasStroke = false
-
-        starView.setNeedsDisplay()
     }
 
     fileprivate func onBackgroundTap() {
@@ -52,24 +48,18 @@ class StarViewController: UIViewController {
         starView.layer.borderWidth = 10
 
         starView.starToViewRatio = 0.77
-
-        starView.setNeedsDisplay()
     }
 
     fileprivate func onThickStarTap() {
         setCommonStarConfig()
         setDefaultFillAndStroke()
         starView.innerToOuterRadiusRatio = 0.6
-
-        starView.setNeedsDisplay()
     }
 
     fileprivate func onThinStarTap() {
         setCommonStarConfig()
         setDefaultFillAndStroke()
         starView.innerToOuterRadiusRatio = 0.3
-
-        starView.setNeedsDisplay()
     }
 
     // MARK: - Common view configuration
@@ -108,5 +98,6 @@ class StarViewController: UIViewController {
         else if sender == thinButton {
             onThinStarTap()
         }
+        starView.setNeedsDisplay()
     }
 }

@@ -1,7 +1,8 @@
 import UIKit
 
 public enum OMAKOSpinnerType {
-    case colorChangingSquare
+    case square
+    case star
 }
 
 public enum OMAKOPopUpViewError: Error {
@@ -104,7 +105,7 @@ open class OMAKOPopUpView: UIView {
         })
     }
 
-    open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType = .colorChangingSquare) {
+    open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType = .square) {
         self.spinnerType = spinnerType
 
         parentView.addSubview(self)
@@ -129,12 +130,14 @@ open class OMAKOPopUpView: UIView {
         }
 
         switch spinnerType {
-        case .colorChangingSquare:
-            animateColorChangingSquare()
+        case .square:
+            animateSquareSpinner()
+        case .star:
+            animateSquareSpinner()
         }
     }
 
-    fileprivate func animateColorChangingSquare() {
+    fileprivate func animateSquareSpinner() {
         guard let spinnerView = spinnerView, let startingColor = spinnerView.backgroundColor else {
             return
         }
@@ -158,9 +161,17 @@ open class OMAKOPopUpView: UIView {
                 UIView.addKeyframe(withRelativeStartTime: 2.0/3.0, relativeDuration: 1.0/3.0) {
                     spinnerView.backgroundColor = startingColor
                 }
-        },
+            },
             completion: nil
         )
+
+        rotateSpinner()
+    }
+
+    fileprivate func rotateSpinner() {
+        guard let spinnerView = spinnerView else {
+            return
+        }
 
         /// Continuous rotation
         let animation = CABasicAnimation(keyPath: "transform.rotation")
@@ -431,14 +442,20 @@ open class OMAKOPopUpView: UIView {
         spinnerView.translatesAutoresizingMaskIntoConstraints = false
 
         switch spinnerType {
-        case .colorChangingSquare:
-            setupColorChangingSquareSpinner()
+        case .square:
+            setupSquareSpinner()
+        case .star:
+            setupStarSpinner()
         }
 
         addSubview(spinnerView)
     }
 
-    fileprivate func setupColorChangingSquareSpinner() {
+    fileprivate func setupStarSpinner() {
+
+    }
+
+    fileprivate func setupSquareSpinner() {
         guard let spinnerView = spinnerView else {
             return
         }
