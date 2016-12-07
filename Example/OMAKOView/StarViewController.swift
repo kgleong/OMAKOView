@@ -52,7 +52,7 @@ class StarViewController: UIViewController {
         starView.layer.cornerRadius = 75
         starView.clipsToBounds = true
 
-        starView.starToViewRatio = 1
+        starView.starToViewRatio = 0.87
 
         starView.setNeedsDisplay()
     }

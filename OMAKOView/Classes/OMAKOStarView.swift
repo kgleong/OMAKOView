@@ -92,9 +92,6 @@ open class OMAKOStarView: UIView {
             drawStar(pathPoints: outerPathPoints, fillColor: fillColor)
         }
 
-        // TODO: - Remove before publishing
-        isDebug = true
-
         if isDebug {
             let center = CGPoint(x: bounds.width/2.0, y: bounds.width/2.0)
             renderPoint(point: center, size: 2, color: UIColor.blue)
@@ -184,7 +181,9 @@ open class OMAKOStarView: UIView {
     }
 
     fileprivate func distanceFromStarCenterToBottom() -> CGFloat {
-        return starOuterRadius() * cos(π/CGFloat(numVertices))
+        /// Length of the plumb line dropped from the star center to the
+        /// bottom of the star.
+        return starOuterRadius() * cos(π/CGFloat(numVertices * 2))
     }
 
     fileprivate func starOuterRadius() -> CGFloat {
