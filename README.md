@@ -16,6 +16,8 @@ Custom views included in this library:
 
 |Name|Description|
 |----|-----------|
+|[Pop Up View & Loading Spinner](#pop-up-view)||
+|[Star View](#star-view)||
 |[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide its content.|
 
 ## Partially Visible Swipeable View
