@@ -22,11 +22,7 @@ class StarViewController: UIViewController {
 
     fileprivate func onStrokeAndFillTap() {
         setCommonStarConfig()
-
-        starView.strokeWidth = 25
-        starView.strokeColor = UIColor.red
-        starView.hasStroke = true
-        starView.fillColor = UIColor.yellow
+        setDefaultFillAndStroke()
 
         starView.setNeedsDisplay()
     }
@@ -43,25 +39,55 @@ class StarViewController: UIViewController {
     fileprivate func onBackgroundTap() {
         setCommonStarConfig()
 
-        starView.strokeWidth = 25
-        starView.strokeColor = UIColor.red
+        let redColor = UIColor(red: 0.9, green: 0, blue: 0, alpha: 1.0)
+        starView.strokeWidth = 20
+        starView.strokeColor = redColor
         starView.hasStroke = true
         starView.fillColor = UIColor(red: 0.95, green: 0.95, blue: 0.99, alpha: 1.0)
 
         starView.backgroundColor = UIColor(red: 0.12, green: 0.46, blue: 0.24, alpha: 1.0)
         starView.layer.cornerRadius = 75
         starView.clipsToBounds = true
+        starView.layer.borderColor = redColor.cgColor
+        starView.layer.borderWidth = 10
 
-        starView.starToViewRatio = 0.87
+        starView.starToViewRatio = 0.77
 
         starView.setNeedsDisplay()
     }
+
+    fileprivate func onThickStarTap() {
+        setCommonStarConfig()
+        setDefaultFillAndStroke()
+        starView.innerToOuterRadiusRatio = 0.6
+
+        starView.setNeedsDisplay()
+    }
+
+    fileprivate func onThinStarTap() {
+        setCommonStarConfig()
+        setDefaultFillAndStroke()
+        starView.innerToOuterRadiusRatio = 0.3
+
+        starView.setNeedsDisplay()
+    }
+
+    // MARK: - Common view configuration
 
     fileprivate func setCommonStarConfig() {
         starView.cacheVertices = false
         starView.innerToOuterRadiusRatio = defaultInnerOuterRadiusRatio
         starView.starToViewRatio = 1.0
         starView.backgroundColor = UIColor.clear
+        starView.layer.borderColor = nil
+        starView.layer.borderWidth = 0
+    }
+
+    fileprivate func setDefaultFillAndStroke() {
+        starView.strokeWidth = 20
+        starView.strokeColor = UIColor.red
+        starView.hasStroke = true
+        starView.fillColor = UIColor.yellow
     }
 
     // MARK: - Target actions
@@ -75,6 +101,12 @@ class StarViewController: UIViewController {
         }
         else if sender == withBackgroundButton {
             onBackgroundTap()
+        }
+        else if sender == thickButton {
+            onThickStarTap()
+        }
+        else if sender == thinButton {
+            onThinStarTap()
         }
     }
 }
