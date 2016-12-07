@@ -10,7 +10,8 @@ class PopUpViewController: UIViewController {
 
     var popUpView: OMAKOPopUpView?
 
-    var defaultTitleString: NSMutableAttributedString = NSMutableAttributedString(string: "Title Displayed Here")
+    var defaultTitleString = NSMutableAttributedString(string: "Title Displayed Here")
+    var defaultLoadingString = NSMutableAttributedString(string: "Loading")
 
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,7 @@ class PopUpViewController: UIViewController {
             return
         }
 
-        popUpView.titleText = NSMutableAttributedString(string: "Loading")
+        popUpView.titleText = defaultLoadingString
         popUpView.bodyText = NSMutableAttributedString(string: "Your request will be completed shortly.")
         popUpView.displaySpinner(parentView: view)
     }
@@ -98,9 +99,9 @@ class PopUpViewController: UIViewController {
         guard let popUpView = popUpView else {
             return
         }
-
-        // For now, should log an error message.
-        popUpView.display(parentView: view)
+        
+        popUpView.titleText = defaultLoadingString
+        popUpView.displaySpinner(parentView: view, spinnerType: .star)
     }
 
     fileprivate func createPopUpView() {

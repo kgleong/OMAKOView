@@ -137,6 +137,10 @@ open class OMAKOPopUpView: UIView {
         }
     }
 
+    fileprivate func animateStarSpinner() {
+        rotateSpinner()
+    }
+
     fileprivate func animateSquareSpinner() {
         guard let spinnerView = spinnerView, let startingColor = spinnerView.backgroundColor else {
             return
@@ -433,14 +437,6 @@ open class OMAKOPopUpView: UIView {
             return
         }
 
-        spinnerView = UIView()
-
-        guard let spinnerView = spinnerView else {
-            return
-        }
-
-        spinnerView.translatesAutoresizingMaskIntoConstraints = false
-
         switch spinnerType {
         case .square:
             setupSquareSpinner()
@@ -448,22 +444,35 @@ open class OMAKOPopUpView: UIView {
             setupStarSpinner()
         }
 
-        addSubview(spinnerView)
-    }
-
-    fileprivate func setupStarSpinner() {
-
-    }
-
-    fileprivate func setupSquareSpinner() {
         guard let spinnerView = spinnerView else {
             return
         }
 
-        spinnerView.backgroundColor = UIColor.red
-        spinnerView.layer.cornerRadius = spinnerSizeInPoints / 4
-        spinnerView.layer.borderWidth = 2
-        spinnerView.layer.borderColor = UIColor.white.cgColor
+        spinnerView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(spinnerView)
+    }
+
+    fileprivate func setupStarSpinner() {
+        var starView = OMAKOStarView()
+
+        starView.strokeColor = UIColor.red
+        starView.hasStroke = false
+        starView.innerToOuterRadiusRatio = 0.45
+        starView.starToViewRatio = 1.0
+        starView.backgroundColor = UIColor.clear
+
+        spinnerView = starView
+    }
+
+    fileprivate func setupSquareSpinner() {
+        var squareView = UIView()
+
+        squareView.backgroundColor = UIColor.red
+        squareView.layer.cornerRadius = spinnerSizeInPoints / 4
+        squareView.layer.borderWidth = 2
+        squareView.layer.borderColor = UIColor.white.cgColor
+
+        spinnerView = squareView
     }
 
     fileprivate func setupTitleLabel() {
