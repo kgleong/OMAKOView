@@ -101,6 +101,7 @@ class PopUpViewController: UIViewController {
         }
         
         popUpView.titleText = defaultLoadingString
+        popUpView.spinnerSizeInPoints = 40
         popUpView.displaySpinner(parentView: view, spinnerType: .star)
     }
 

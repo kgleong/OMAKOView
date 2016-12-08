@@ -133,11 +133,36 @@ open class OMAKOPopUpView: UIView {
         case .square:
             animateSquareSpinner()
         case .star:
-            animateSquareSpinner()
+            animateStarSpinner()
         }
     }
 
     fileprivate func animateStarSpinner() {
+        // TODO: - Does not change colors yet.  Fix
+
+        /// Continuous cycling through colors
+        UIView.animateKeyframes(
+            withDuration: spinnerDuration,
+            delay: 0,
+            options: [UIViewKeyframeAnimationOptions.repeat],
+            animations: {
+                guard let spinnerView = self.spinnerView as? OMAKOStarView else {
+                    return
+                }
+
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0/3.0) {
+                    spinnerView.fillColor = UIColor.green
+                }
+                UIView.addKeyframe(withRelativeStartTime: 1.0/3.0, relativeDuration: 1.0/3.0) {
+                    spinnerView.fillColor = UIColor.blue
+                }
+                UIView.addKeyframe(withRelativeStartTime: 2.0/3.0, relativeDuration: 1.0/3.0) {
+                    spinnerView.fillColor = UIColor.red
+                }
+        },
+            completion: nil
+        )
+
         rotateSpinner()
     }
 
