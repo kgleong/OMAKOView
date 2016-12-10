@@ -1,6 +1,5 @@
 # OMAKOView
 
-[![CI Status](http://img.shields.io/travis/kgleong/OMAKOView.svg?style=flat)](https://travis-ci.org/kgleong/OMAKOView)
 [![Version](https://img.shields.io/cocoapods/v/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![License](https://img.shields.io/cocoapods/l/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![Platform](https://img.shields.io/cocoapods/p/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
@@ -16,9 +15,33 @@ Custom views included in this library:
 
 |Name|Description|
 |----|-----------|
-|[Pop Up View & Loading Spinner](#pop-up-view)||
-|[Star View](#star-view)||
+|[Pop Up View & Loading Spinner](#pop-up-view)|A pop up that shows a title and/or caption in addition to a loading spinner.|
+|[Star View](#star-view)|Highly configurable `UIView` star drawn using `UIBezierPath` paths.|
 |[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide its content.|
+
+## Pop Up View
+
+## Star View
+
+### Configuration
+
+In Interface Builder, the following properties are available:
+
+![Star view inspectable properties](/images/star-inspectable.png)
+
+|Property Name|Description|Type|Default|
+|-------------|-----------|----|-------|
+|`strokeWidth`|The star's border width.|`CGFloat`|`5.0`|
+|`hasStroke`|If true, a border will be rendered.|`Bool`|`false`|
+|`strokeColor`|Border color.|`UIColor`|Red|
+|`fillColor`|The star's fill color.|`UIColor`|Powder blue|
+|`innerToOuterRadiusRatio`|Determines the thickness of the star.  Values closer to 1.0 will result in a thicker star, while values closer to 0.0 will result in a thinner star.|`CGFloat`|`0.45`|
+|`starToViewRatio`|The size of the star proportional to the view.  Range: 0.0 to 1.0.|`CGFloat`|`1.0`|
+|`cacheVertices`|Vertex positions will be cached.  Set this to false if vertex positions are expected to change between `draw(_:)` render calls.|`Bool`|`true`|
+
+### Usage
+
+![Star view variations](/images/star_variations.png)
 
 ## Partially Visible Swipeable View
 

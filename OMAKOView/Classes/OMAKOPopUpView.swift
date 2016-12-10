@@ -27,6 +27,11 @@ open class OMAKOPopUpView: UIView {
     open var titleFontColor: UIColor = UIColor(red: 0.1, green: 0.1, blue: 0.3, alpha: 1.0)
     open var bodyFontColor: UIColor = UIColor(red: 0.3, green: 0.1, blue: 0.3, alpha: 1.0)
 
+    /// Spinner options
+    open var spinnerBorderColor: UIColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
+    open var spinnerFillColor: UIColor = UIColor(red: 0.05, green: 0.5, blue: 1.0, alpha: 1.0)
+    open var spinnerBorderWidth: CGFloat = 5.0
+
     /// Layout
 
     open var padding: CGFloat = 10.0
@@ -61,7 +66,8 @@ open class OMAKOPopUpView: UIView {
         if superview != nil {
             setupView()
 
-            // TODO: Ideally, a check should be performed earlier, (e.g., in the public API methods) rather than after the view has been added to the view hierarchy.
+            // TODO: Ideally, a check should be performed earlier, (e.g., in the public API methods) 
+            // rather than after the view has been added to the view hierarchy.
             do {
                 try setupConstraints()
             }
@@ -138,31 +144,6 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func animateStarSpinner() {
-        // TODO: - Does not change colors yet.  Fix
-
-        /// Continuous cycling through colors
-        UIView.animateKeyframes(
-            withDuration: spinnerDuration,
-            delay: 0,
-            options: [UIViewKeyframeAnimationOptions.repeat],
-            animations: {
-                guard let spinnerView = self.spinnerView as? OMAKOStarView else {
-                    return
-                }
-
-                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1.0/3.0) {
-                    spinnerView.fillColor = UIColor.green
-                }
-                UIView.addKeyframe(withRelativeStartTime: 1.0/3.0, relativeDuration: 1.0/3.0) {
-                    spinnerView.fillColor = UIColor.blue
-                }
-                UIView.addKeyframe(withRelativeStartTime: 2.0/3.0, relativeDuration: 1.0/3.0) {
-                    spinnerView.fillColor = UIColor.red
-                }
-        },
-            completion: nil
-        )
-
         rotateSpinner()
     }
 
@@ -478,19 +459,21 @@ open class OMAKOPopUpView: UIView {
     }
 
     fileprivate func setupStarSpinner() {
-        var starView = OMAKOStarView()
+        let starView = OMAKOStarView()
 
-        starView.strokeColor = UIColor.red
-        starView.hasStroke = false
         starView.innerToOuterRadiusRatio = 0.45
         starView.starToViewRatio = 1.0
+        starView.fillColor = spinnerFillColor
+        starView.strokeColor = spinnerBorderColor
+        starView.strokeWidth = spinnerBorderWidth
+        starView.hasStroke = true
         starView.backgroundColor = UIColor.clear
 
         spinnerView = starView
     }
 
     fileprivate func setupSquareSpinner() {
-        var squareView = UIView()
+        let squareView = UIView()
 
         squareView.backgroundColor = UIColor.red
         squareView.layer.cornerRadius = spinnerSizeInPoints / 4
