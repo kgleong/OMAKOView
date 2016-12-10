@@ -111,7 +111,7 @@ open class OMAKOPopUpView: UIView {
         })
     }
 
-    open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType = .square) {
+    open func displaySpinner(parentView: UIView, spinnerType: OMAKOSpinnerType) {
         self.spinnerType = spinnerType
 
         parentView.addSubview(self)
@@ -478,7 +478,7 @@ open class OMAKOPopUpView: UIView {
         squareView.backgroundColor = UIColor.red
         squareView.layer.cornerRadius = spinnerSizeInPoints / 4
         squareView.layer.borderWidth = 2
-        squareView.layer.borderColor = UIColor.white.cgColor
+        squareView.layer.borderColor = spinnerBorderColor.cgColor
 
         spinnerView = squareView
     }

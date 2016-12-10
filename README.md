@@ -35,8 +35,71 @@ Customizable pop up that can fade away after a specified interval and also takes
 
 |Property Name|Description|Type|Default|
 |-------------|-----------|----|-------|
+|`titleText`|Styleable title text|`NSMutableAttributedString`|N/A|
+|`bodyText`|Styleable body text|`NSMutableAttributedString`|N/A|
+|`titleFontName`|Title font name. Passed into `UIFont(name:size:)`|`String`|`nil`.  Will default to system font.|
+|`bodyFontName`|Body font name. Passed into `UIFont(name:size:)`|`String`|`nil`.  Will default to system font.|
+|`titleFontColor`|Tile font color|`UIColor`|Dark blue|
+|`bodyFontColor`|Body font color|`UIColor`|Purple|
+|`spinnerBorderColor`|Spinner border color|`UIColor`|Off white|
+|`spinnerFillColor`|Used for spinners which retain the same color.|`UIColor`|Powder blue|
+|`spinnerBorderWidth`|The border width of the spinner.|`CGFloat`|5.0|
+|`padding`|The padding between the elements.  E.g., spinner, title, body.|`CGFloat`|10.0|
+|`cornerRadius`|If set, will clip the view and round the edges to the specified value.|`CGFloat`|10.0|
+|`spinnerSizeInPoints`|The size of the spinner view.|`CGFloat`|20.0|
+|`spinnerDuration`|The duration of the rotation and any other spinner animations.|`CGFloast`|2.0|
 
 ### Usage
+
+#### Text only
+
+Display a standard pop up with a title and body.
+
+```swift
+popUpView = OMAKOPopUpView()
+
+popUpView.titleText = NSMutableAttributedString(string: "Title")
+popUpView.bodyText = NSMutableAttributedString(string: "Body")
+
+// Pass in the view that the popup should be centered in.
+// The pop up will add itself to the view's hierarchy.
+popUpView.display(parentView: view)
+```
+
+Hiding a popup:
+```swift
+popUpView.hide(completion: nil)
+
+// Or a completion block can be passed in:
+popUpView.hide() { print("Do something after the popup is dismissed") }
+```
+
+Displaying a popup for a set interval:
+
+```swift
+/*
+    Will dismiss the popup after 5 seconds.
+
+    A completion block can be passed in, which will execute after the popup
+    is dismissed.
+*/
+popUpView.display(parentView: view, withDuration: 5.0, completion: nil)
+```
+
+#### Spinners
+
+```swift
+popUpView = OMAKOPopUpView()
+
+popUpView.titleText = NSMutableAttributedString(string: "Loading")
+popUpView.spinnerSizeInPoints = 40.0 // Results in a larger spinner.
+
+popUpView.displaySpinner(parentView: view, spinnerType: .square) // Square spinner
+popUpView.displaySpinner(parentView: view, spinnerType: .star) // Star spinner
+
+// Hide
+popUpView.hide(completion: nil)
+```
 
 ## Star View
 

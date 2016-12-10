@@ -90,7 +90,7 @@ class PopUpViewController: UIViewController {
 
         popUpView.titleText = defaultLoadingString
         popUpView.bodyText = NSMutableAttributedString(string: "Your request will be completed shortly.")
-        popUpView.displaySpinner(parentView: view)
+        popUpView.displaySpinner(parentView: view, spinnerType: .square)
     }
 
     fileprivate func displayStarSpinner() {
