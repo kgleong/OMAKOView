@@ -19,11 +19,24 @@ Custom views included in this library:
 |[Star View](#star-view)|Highly configurable `UIView` star drawn using `UIBezierPath` objects.|
 |[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide its content.|
 
+### Table of Contents
+
+* [PopUpView](#pop-up-view)
+* [Star View](#star-view)
+* [Partially visible swipeable view](#partially-visible-swipeable-view)
+
 ## Pop Up View
 
 Customizable pop up that can fade away after a specified interval and also takes a closure that is called on dismissal or completion.
 
 ![Pop up view demo](/images/popup-view-demo.gif)
+
+### Configuration
+
+|Property Name|Description|Type|Default|
+|-------------|-----------|----|-------|
+
+### Usage
 
 ## Star View
 
