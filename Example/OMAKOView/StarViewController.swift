@@ -42,8 +42,6 @@ class StarViewController: UIViewController {
         starView.fillColor = UIColor(red: 0.95, green: 0.95, blue: 0.99, alpha: 1.0)
 
         let blueColor = UIColor(red: 0.05, green: 0.5, blue: 1.0, alpha: 1.0)
-        let greenColor = UIColor(red: 0.12, green: 0.46, blue: 0.24, alpha: 1.0)
-
         starView.backgroundColor = blueColor
         starView.layer.cornerRadius = 75
         starView.clipsToBounds = true

@@ -16,12 +16,20 @@ Custom views included in this library:
 |Name|Description|
 |----|-----------|
 |[Pop Up View & Loading Spinner](#pop-up-view)|A pop up that shows a title and/or caption in addition to a loading spinner.|
-|[Star View](#star-view)|Highly configurable `UIView` star drawn using `UIBezierPath` paths.|
+|[Star View](#star-view)|Highly configurable `UIView` star drawn using `UIBezierPath` objects.|
 |[Partially visible swipeable view](#partially-visible-swipeable-view)|A partially visible view that responds to vertical swipes to reveal and hide its content.|
 
 ## Pop Up View
 
+Customizable pop up that can fade away after a specified interval and also takes a closure that is called on dismissal or completion.
+
+![Pop up view demo](/images/popup-view-demo.gif)
+
 ## Star View
+
+A `UIView` that draws a highly configurable star using `UIBezierPath` objects.
+
+![Star view demo](/images/star-view-demo.gif)
 
 ### Configuration
 
@@ -35,13 +43,35 @@ In Interface Builder, the following properties are available:
 |`hasStroke`|If true, a border will be rendered.|`Bool`|`false`|
 |`strokeColor`|Border color.|`UIColor`|Red|
 |`fillColor`|The star's fill color.|`UIColor`|Powder blue|
-|`innerToOuterRadiusRatio`|Determines the thickness of the star.  Values closer to 1.0 will result in a thicker star, while values closer to 0.0 will result in a thinner star.|`CGFloat`|`0.45`|
+|`innerToOuterRadiusRatio`|Determines the thickness of the star.  Values closer to 1.0 will widen the arms of the star, while values closer to 0.0 will thin the arms.|`CGFloat`|`0.45`|
 |`starToViewRatio`|The size of the star proportional to the view.  Range: 0.0 to 1.0.|`CGFloat`|`1.0`|
 |`cacheVertices`|Vertex positions will be cached.  Set this to false if vertex positions are expected to change between `draw(_:)` render calls.|`Bool`|`true`|
 
 ### Usage
 
 ![Star view variations](/images/star_variations.png)
+
+```swift
+var starView = OMAKOStarView()
+starView.hasStroke = true
+starView.strokeWidth = 5.0
+starView.strokeColor = UIColor.red
+starView.fillColor = UIColor.yellow
+starView.innerToOuterRadiusRatio = 0.25 // Results in a thinner star.
+starView.starToViewRatio = 0.8 // Results in a smaller star.
+```
+
+Rounding the edges inscribes the star within a circle, since the view is a subclass of `UIView`.
+
+```swift
+var starView = OMAKOStarView()
+
+// Creates a circular border. The usual UIView properties are available.
+starView.layer.cornerRadius = starView.bounds.width/Float(2)
+starView.layer.borderWidth = 5.0
+starView.layer.borderColor = UIColor.red.cgColor
+starView.clipToBound = true
+```
 
 ## Partially Visible Swipeable View
 
