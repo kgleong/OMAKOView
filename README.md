@@ -4,6 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![Platform](https://img.shields.io/cocoapods/p/OMAKOView.svg?style=flat)](http://cocoapods.org/pods/OMAKOView)
 [![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/kgleong/omakoview)](http://clayallsopp.github.io/readme-score?url=https://github.com/kgleong/omakoview)
+[![CI Status](http://img.shields.io/travis/kgleong/OMAKOView.svg?style=flat)](https://travis-ci.org/kgleong/OMAKOView)
 
 |Description|Specification|
 |----|-----------|
