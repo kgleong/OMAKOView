@@ -78,7 +78,7 @@ class PopUpViewController: UIViewController {
         }
 
         popUpView.bodyText = NSMutableAttributedString(string: "Loading")
-        popUpView.displaySpinner(parentView: view)
+        popUpView.displaySpinner(parentView: view, spinnerType: .square)
     }
 
     fileprivate func displaySquareSpinnerWithTitle() {
