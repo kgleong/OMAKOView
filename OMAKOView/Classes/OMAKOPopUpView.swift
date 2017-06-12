@@ -186,7 +186,7 @@ open class OMAKOPopUpView: UIView {
         /// Continuous rotation
         let animation = CABasicAnimation(keyPath: "transform.rotation")
         animation.fromValue = 0
-        animation.toValue = CGFloat(M_PI * 2)
+        animation.toValue = CGFloat(Double.pi * 2)
         animation.duration = spinnerDuration
         animation.repeatCount = Float.infinity
 

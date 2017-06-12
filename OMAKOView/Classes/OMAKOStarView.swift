@@ -23,11 +23,11 @@ open class OMAKOStarView: UIView {
     /// Ratio of outer radius to minimum view dimension.  I.e., star size.
     @IBInspectable open var starToViewRatio: CGFloat = 1.0
 
-    fileprivate let π: CGFloat = CGFloat(M_PI)
+    fileprivate let π: CGFloat = CGFloat(Double.pi)
     fileprivate let numVertices: Int = 5
 
     /// 72 degrees (angle between each star's vertex) in radians
-    fileprivate let angleBetweenVertices: CGFloat = 2 * CGFloat(M_PI) / 5
+    fileprivate let angleBetweenVertices: CGFloat = 2 * CGFloat(Double.pi) / 5
 
     /// Vertex set for the outer star
     fileprivate var outerPathPoints = [CGPoint]()
